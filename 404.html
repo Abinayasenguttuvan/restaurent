@@ -12,22 +12,26 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:Arial, sans-serif;
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     background:linear-gradient(135deg,#111,#2a1d16,#111);
-    overflow:hidden;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:20px;
+    position:relative;
 }
-
 /* Floating Food Icons */
 .r404-food{
     position:absolute;
     font-size:40px;
     animation:r404float 6s infinite ease-in-out;
     opacity:.25;
+    min-height:1200px;
 }
 
 .food1{top:10%; left:12%;}
@@ -51,6 +55,7 @@ body{
     backdrop-filter:blur(12px);
     border:1px solid rgba(255,255,255,0.08);
     animation:r404fade 1.2s ease;
+    margin:30px 0;
 }
 
 @keyframes r404fade{
@@ -129,7 +134,7 @@ body{
     background:#ff7a39;
 }
 
-/* Responsive */
+/* Laptop / Tablet */
 @media(max-width:992px){
     .r404-number{
         font-size:140px;
@@ -138,11 +143,24 @@ body{
     .r404-title{
         font-size:36px;
     }
+
+    .r404-text{
+        font-size:18px;
+    }
 }
 
+/* Mobile */
 @media(max-width:768px){
+    body{
+        align-items:flex-start;
+        padding:15px;
+    }
+
     .r404-box{
+        width:100%;
         padding:40px 20px;
+        margin-top:40px;
+        margin-bottom:40px;
     }
 
     .r404-number{
@@ -167,6 +185,34 @@ body{
         font-size:28px;
     }
 }
+
+/* Small Mobile */
+@media(max-width:480px){
+    .r404-number{
+        font-size:70px;
+    }
+
+    .r404-title{
+        font-size:22px;
+    }
+
+    .r404-text{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .r404-btn{
+        font-size:14px;
+        padding:14px 20px;
+    }
+}
+.page-wrap{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 0;
+}
 </style>
 </head>
 <body>
@@ -175,8 +221,9 @@ body{
 <div class="r404-food food2">🍔</div>
 <div class="r404-food food3">🍟</div>
 <div class="r404-food food4">🍜</div>
-
+<div class="page-wrap">
 <div class="r404-box">
+    
     <div class="r404-number">404</div>
 
     <h1 class="r404-title">Oops! Page Not Found</h1>
@@ -193,6 +240,7 @@ body{
             Previous Page
         </button>
     </div>
+</div>
 </div>
 
 <script>

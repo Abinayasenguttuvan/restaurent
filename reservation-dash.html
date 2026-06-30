@@ -21,21 +21,28 @@ href="https://cdn.jsdelivr.net/npm/chart.js">
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
-    <a href="./index.html" class="logo-box">
-        <!-- <img src="./white.webp" alt="Stackly Logo"> -->
-        <span>STACKLY</span>
-    </a>
+    <!-- Header -->
+    <div class="sidebar-top">
+        <a href="./index.html" class="logo-box">
+            <span>STACKLY</span>
+        </a>
+
+        <!-- Close Button -->
+        <button id="closeSidebarBtn" class="close-sidebar-btn">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
 
     <ul class="sidebar-menu">
         <li>
-            <a href="./admin.html" >
+            <a href="./admin.html">
                 <i class="fas fa-chart-pie"></i>
                 Dashboard
             </a>
         </li>
 
         <li>
-            <a href="./reservation-dash.html" class="active">
+            <a href="./reservation-dash.html"  class="active">
                 <i class="fas fa-calendar-check"></i>
                 Reservations
             </a>
@@ -62,7 +69,6 @@ href="https://cdn.jsdelivr.net/npm/chart.js">
             </a>
         </li>
     </ul>
-
 </div>
 
 <!-- MAIN CONTENT -->
@@ -167,6 +173,41 @@ href="https://cdn.jsdelivr.net/npm/chart.js">
 </section>
 
 <style>
+    /* Sidebar top row */
+.sidebar-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:30px;
+}
+
+/* X button */
+.close-sidebar-btn{
+    display:none;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff7b00,#ffb347);
+    color:#fff;
+    font-size:20px;
+    box-shadow:0 6px 18px rgba(255,123,0,.35);
+    transition:.3s;
+}
+
+.close-sidebar-btn:hover{
+    transform:rotate(90deg) scale(1.05);
+}
+
+/* Mobile only */
+@media (max-width:900px){
+    .close-sidebar-btn{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+}
     /* EXTRA RESERVATION CONTENT */
 .res-extra-wrapper{
 display:grid;
@@ -676,16 +717,23 @@ document.getElementById("adminEmail").innerText =
 
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
-const menuBtn = document.getElementById("menuBtn");
+const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+
+/* Close sidebar when X clicked */
+closeSidebarBtn.addEventListener("click", function () {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+});
+
+/* Close sidebar when overlay clicked */
+overlay.addEventListener("click", function () {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+});
 
 menuBtn.addEventListener("click", function () {
     sidebar.classList.add("active");
     overlay.classList.add("active");
-});
-
-overlay.addEventListener("click", function () {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
 });
 
 
