@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/chart.js">
+
+
+</head>
+<body>
+
+<!-- Mobile Menu Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+    <a href="./index.html" class="logo-box">
+        <img src="./white.webp" alt="Stackly Logo">
+        <span>STACKLY</span>
+    </a>
+
+    <ul class="sidebar-menu">
+        <li>
+            <a href="./customer.html">
+                <i class="fas fa-chart-pie"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="./order.html"  class="active">
+                <i class="fas fa-calendar-check"></i>
+             My order
+            </a>
+        </li>
+
+        <li>
+            <a href="./fav.html">
+                <i class="fas fa-utensils"></i>
+                Favorites
+            </a>
+        </li>
+
+        <li>
+            <a href="./404.html">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+        </li>
+
+        <li>
+            <a href="./index.html" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+
+        <div class="top-left">
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <h1>
+                <i class="fas fa-user-shield"></i>
+                Customer Dashboard
+            </h1>
+        </div>
+
+        <div class="admin-info">
+            <div class="admin-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+
+            <div class="admin-text">
+                <h4 id="adminName">Admin</h4>
+                <p id="adminEmail">admin@stackly.com</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ORDER STAT CARDS -->
+<div class="order-cards">
+
+    <div class="order-stat-card">
+        <i class="fas fa-shopping-bag"></i>
+        <h2>124</h2>
+        <p>Total Orders</p>
+    </div>
+
+    <div class="order-stat-card">
+        <i class="fas fa-truck"></i>
+        <h2>18</h2>
+        <p>In Delivery</p>
+    </div>
+
+    <div class="order-stat-card">
+        <i class="fas fa-check-circle"></i>
+        <h2>96</h2>
+        <p>Delivered</p>
+    </div>
+
+    <div class="order-stat-card">
+        <i class="fas fa-clock"></i>
+        <h2>10</h2>
+        <p>Preparing</p>
+    </div>
+
+</div>
+
+<!-- ACTIVE ORDERS -->
+<div class="orders-table-box">
+    <h2><i class="fas fa-receipt"></i> Active Orders</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Dish</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>#1001</td>
+                <td>Italian Pizza</td>
+                <td>$15</td>
+                <td><span class="status preparing">Preparing</span></td>
+            </tr>
+
+            <tr>
+                <td>#1002</td>
+                <td>Burger Combo</td>
+                <td>$11</td>
+                <td><span class="status delivery">Out for Delivery</span></td>
+            </tr>
+
+            <tr>
+                <td>#1003</td>
+                <td>White Pasta</td>
+                <td>$14</td>
+                <td><span class="status delivered">Delivered</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- POPULAR ORDERS -->
+<section class="popular-orders">
+    <h2>Popular Orders</h2>
+
+    <div class="popular-grid">
+
+        <div class="popular-card">
+            <img src="./pizza (2).webp">
+            <h3>Italian Pizza</h3>
+            <p>Most ordered this week</p>
+        </div>
+
+        <div class="popular-card">
+            <img src="./burger (1).webp">
+            <h3>Burger Combo</h3>
+            <p>Customer favorite</p>
+        </div>
+
+        <div class="popular-card">
+            <img src="./brownie.webp">
+            <h3>Chocolate Dessert</h3>
+            <p>Best seller</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-box">
+    <h2>Order Timeline</h2>
+
+    <div class="timeline-item">
+        <span></span>
+        Order #1001 received
+    </div>
+
+    <div class="timeline-item">
+        <span></span>
+        Chef started preparing food
+    </div>
+
+    <div class="timeline-item">
+        <span></span>
+        Order dispatched
+    </div>
+</section>
+
+<style>
+    .order-cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.order-stat-card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:28px;
+border-radius:20px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.order-stat-card i{
+font-size:32px;
+color:#ff9f43;
+margin-bottom:15px;
+}
+
+.order-stat-card h2{
+font-size:32px;
+color:#ffb347;
+margin-bottom:8px;
+}
+
+.orders-table-box{
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+overflow:auto;
+margin-bottom:30px;
+}
+
+.orders-table-box h2{
+margin-bottom:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:600px;
+}
+
+th,td{
+padding:15px;
+text-align:left;
+}
+
+th{
+background:rgba(255,255,255,0.08);
+}
+
+.status{
+padding:8px 14px;
+border-radius:30px;
+font-size:12px;
+font-weight:600;
+}
+
+.preparing{
+background:#f39c12;
+}
+
+.delivery{
+background:#3498db;
+}
+
+.delivered{
+background:#27ae60;
+}
+
+.popular-orders{
+margin-bottom:30px;
+}
+
+.popular-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.popular-card{
+background:rgba(255,255,255,0.08);
+padding:18px;
+border-radius:20px;
+text-align:center;
+backdrop-filter:blur(15px);
+}
+
+.popular-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:16px;
+margin-bottom:15px;
+transition:.4s;
+}
+
+.popular-card:hover img{
+transform:scale(1.05);
+}
+
+.timeline-box{
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+}
+
+.timeline-item{
+display:flex;
+align-items:center;
+gap:15px;
+padding:15px 0;
+}
+
+.timeline-item span{
+width:16px;
+height:16px;
+border-radius:50%;
+background:#ff9f43;
+display:block;
+}
+
+/* Tablet */
+@media(max-width:1100px){
+.order-cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+.popular-grid{
+grid-template-columns:1fr;
+}
+}
+
+/* Mobile */
+@media(max-width:768px){
+.order-cards{
+grid-template-columns:1fr;
+}
+
+.popular-card img{
+height:180px;
+}
+}
+
+@media(max-width:480px){
+.orders-table-box{
+padding:18px;
+}
+}
+</style>
+    
+<script>
+    const orderCards = document.querySelectorAll(
+'.order-stat-card,.popular-card,.timeline-box,.orders-table-box'
+);
+
+orderCards.forEach((card,index)=>{
+    card.style.opacity="0";
+    card.style.transform="translateY(40px)";
+
+    setTimeout(()=>{
+        card.style.transition="all .8s ease";
+        card.style.opacity="1";
+        card.style.transform="translateY(0)";
+    }, index*150);
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.65)),
+url('./restaurant-bg.webp') center/cover no-repeat;
+min-height:100vh;
+color:#fff;
+display:flex;
+overflow-x:hidden;
+}
+
+/* Overlay for mobile */
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+opacity:0;
+visibility:hidden;
+transition:.3s;
+z-index:998;
+}
+
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+
+/* Sidebar */
+.sidebar{
+width:280px;
+min-height:100vh;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border-right:1px solid rgba(255,255,255,0.12);
+padding:25px 20px;
+position:fixed;
+left:0;
+top:0;
+z-index:999;
+transition:.3s;
+}
+
+.logo-box{
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
+color:#fff;
+margin-bottom:40px;
+}
+
+.logo-box img{
+width:55px;
+height:55px;
+object-fit:contain;
+}
+
+.logo-box span{
+font-size:24px;
+font-weight:700;
+color:#ff9f43;
+}
+
+.sidebar-menu{
+list-style:none;
+}
+
+.sidebar-menu li{
+margin-bottom:14px;
+}
+
+.sidebar-menu a{
+display:flex;
+align-items:center;
+gap:14px;
+padding:14px 18px;
+border-radius:14px;
+text-decoration:none;
+color:#fff;
+transition:.3s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active{
+background:linear-gradient(135deg,#ff7b00,#ffb347);
+color:#fff;
+transform:translateX(5px);
+}
+
+.sidebar-menu i{
+width:22px;
+text-align:center;
+}
+
+/* Main */
+.main-content{
+margin-left:280px;
+width:calc(100% - 280px);
+padding:25px;
+}
+
+/* Topbar */
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(16px);
+padding:20px 24px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.12);
+}
+
+.top-left{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.top-left h1{
+font-size:28px;
+display:flex;
+gap:12px;
+align-items:center;
+}
+
+.top-left h1 i{
+color:#ff9f43;
+}
+
+.menu-btn{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:24px;
+cursor:pointer;
+}
+
+.admin-info{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.admin-avatar{
+width:52px;
+height:52px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7b00,#ffb347);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+}
+
+.admin-text h4{
+font-size:16px;
+}
+
+.admin-text p{
+font-size:13px;
+opacity:.8;
+}
+
+/* Cards */
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:24px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card-icon{
+width:60px;
+height:60px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff7b00,#ffb347);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+margin-bottom:16px;
+}
+
+.card h3{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.card h2{
+font-size:32px;
+color:#ffb347;
+margin-bottom:8px;
+}
+
+.card p{
+font-size:14px;
+opacity:.8;
+}
+
+/* Charts */
+.chart-grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+margin-bottom:30px;
+}
+
+.chart-box{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.chart-box h3{
+margin-bottom:20px;
+}
+
+/* Table */
+.table-box{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.1);
+overflow:auto;
+}
+
+.table-box h3{
+margin-bottom:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:600px;
+}
+
+th,td{
+padding:14px;
+text-align:left;
+}
+
+th{
+background:rgba(255,255,255,.08);
+}
+
+.status{
+padding:8px 14px;
+border-radius:30px;
+font-size:12px;
+font-weight:600;
+}
+
+.confirmed{
+background:#1faa59;
+}
+
+.pending{
+background:#f39c12;
+}
+
+.cancelled{
+background:#e74c3c;
+}
+
+/* Tablet */
+@media(max-width:1100px){
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+.chart-grid{
+grid-template-columns:1fr;
+}
+}
+
+/* Mobile */
+@media(max-width:900px){
+.sidebar{
+left:-100%;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.main-content{
+margin-left:0;
+width:100%;
+}
+
+.menu-btn{
+display:block;
+}
+
+.topbar{
+padding:16px;
+}
+
+.top-left h1{
+font-size:20px;
+}
+}
+
+@media(max-width:600px){
+.cards{
+grid-template-columns:1fr;
+}
+
+.admin-text{
+display:none;
+}
+
+.top-left h1{
+font-size:18px;
+}
+}
+</style>
+
+<script>
+    /* =========================
+   LOAD ADMIN DETAILS
+========================= */
+
+const adminName = localStorage.getItem("userName");
+const adminEmail = localStorage.getItem("userEmail");
+
+document.getElementById("adminName").innerText =
+    adminName ? adminName : "Admin User";
+
+document.getElementById("adminEmail").innerText =
+    adminEmail ? adminEmail : "admin@stackly.com";
+
+
+/* =========================
+   MOBILE SIDEBAR
+========================= */
+
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+const menuBtn = document.getElementById("menuBtn");
+
+menuBtn.addEventListener("click", function () {
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+});
+
+overlay.addEventListener("click", function () {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+});
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("loggedUser");
+
+    alert("Logged out successfully");
+    window.location.href = "login.html";
+}
+
+
+/* =========================
+   BAR CHART
+========================= */
+
+const barCtx = document.getElementById("barChart");
+
+new Chart(barCtx, {
+    type: "bar",
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        datasets: [{
+            label: "Revenue ($)",
+            data: [12000, 19000, 15000, 25000, 30000, 48720],
+            backgroundColor: [
+                "#ff7b00",
+                "#ff8c1a",
+                "#ffa033",
+                "#ffb347",
+                "#ffc266",
+                "#ffd699"
+            ],
+            borderRadius: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: "white"
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: "white"
+                }
+            },
+            y: {
+                ticks: {
+                    color: "white"
+                }
+            }
+        }
+    }
+});
+
+
+/* =========================
+   PIE CHART
+========================= */
+
+const pieCtx = document.getElementById("pieChart");
+
+new Chart(pieCtx, {
+    type: "pie",
+    data: {
+        labels: [
+            "Pizza",
+            "Burgers",
+            "Pasta",
+            "Desserts"
+        ],
+        datasets: [{
+            data: [35, 25, 20, 20],
+            backgroundColor: [
+                "#ff7b00",
+                "#ffb347",
+                "#ffd699",
+                "#fff0d6"
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: "white"
+                }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

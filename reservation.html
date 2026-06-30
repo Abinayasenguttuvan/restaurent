@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant </title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+}
+
+/* HEADER */
+.stkhd-header{
+    position:sticky;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:#111;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.stkhd-container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.stkhd-logo{
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+}
+
+.stkhd-logo img{
+    height:55px;
+}
+
+.stkhd-logo-text{
+    font-size:32px;
+    font-weight:800;
+    color:#d96a3c;
+    letter-spacing:1px;
+}
+
+/* NAV */
+.stkhd-nav{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.stkhd-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.stkhd-nav a:hover{
+    color:#d96a3c;
+}
+
+/* BUTTON */
+.stkhd-btn{
+    text-decoration:none;
+    background:#531b02;
+    color:white;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:700;
+    transition:.4s;
+}
+
+.stkhd-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HAMBURGER */
+.stkhd-menu-btn,
+.stkhd-close-btn{
+    display:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .stkhd-nav{
+        gap:20px;
+    }
+
+    .stkhd-btn{
+        padding:12px 22px;
+        font-size:14px;
+    }
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+
+    .stkhd-menu-btn{
+        display:block;
+    }
+
+    .stkhd-nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:300px;
+        height:100vh;
+        background:#1a1a1a;
+        flex-direction:column;
+        justify-content:center;
+        gap:30px;
+        transition:.45s ease;
+        z-index:99999;
+    }
+
+    .stkhd-nav.active{
+        right:0;
+    }
+
+    .stkhd-close-btn{
+        display:block;
+        position:absolute;
+        top:25px;
+        right:25px;
+    }
+
+    .stkhd-nav a{
+        font-size:20px;
+    }
+
+    .stkhd-btn{
+        margin-top:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="stkhd-header">
+    <div class="stkhd-container">
+
+        <!-- LOGO -->
+        <a href="./index.html" class="stkhd-logo">
+            <!-- Use image if needed -->
+            <!-- <img src="./orange-logo.webp"> -->
+            <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+        </a>
+
+        <!-- HAMBURGER -->
+        <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="stkhd-nav" id="stkhdNav">
+
+            <div class="stkhd-close-btn" onclick="stkhdCloseMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About Us</a>
+            <a href="./reservation.html">Reservation</a>
+            <a href="./contact.html">Contact Us</a>
+
+            <a href="./login.html" class="stkhd-btn">Book a Table</a>
+        </nav>
+
+    </div>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+    duration:1200,
+    once:true
+});
+</script>
+</header>
+
+<script>
+function stkhdOpenMenu(){
+    document.getElementById("stkhdNav").classList.add("active");
+}
+
+function stkhdCloseMenu(){
+    document.getElementById("stkhdNav").classList.remove("active");
+}
+</script>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="gh-reserve-hero">
+    <div class="gh-hero-overlay"></div>
+
+    <div class="gh-hero-content">
+        <span class="gh-badge">Online Reservation</span>
+        <h1>Reserve Your Table</h1>
+        <p>
+            Experience luxury dining at Grand House. Book your table online
+            and enjoy our world-class hospitality across all branches.
+        </p>
+    </div>
+</section>
+
+
+<!-- ================= INTRO SECTION ================= -->
+<section class="gh-book-intro">
+    <div class="gh-container">
+
+        <div class="gh-intro-text">
+            <h2>Reserve Across the World</h2>
+            <p>
+                Grand House welcomes guests from every corner of the world.
+                Whether you are visiting our Switzerland flagship branch,
+                enjoying skyline dining in Dubai, tasting signature flavors
+                in Chennai, or experiencing premium cuisine in New York,
+                your table is always waiting.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= BRANCH SECTION ================= -->
+<section class="gh-branches">
+    <div class="gh-container">
+
+        <h2 class="gh-section-title">Our Global Branches</h2>
+
+        <div class="gh-branch-grid">
+
+            <div class="gh-branch-card">
+                <img src="./switch.webp" alt="">
+                <h3>Switzerland</h3>
+                <p>Luxury Alpine Dining Experience</p>
+            </div>
+
+            <div class="gh-branch-card">
+                <img src="./dubai.webp" alt="">
+                <h3>Dubai</h3>
+                <p>Skyline Fine Dining</p>
+            </div>
+
+            <div class="gh-branch-card">
+                <img src="./chennai.webp" alt="">
+                <h3>Chennai</h3>
+                <p>Authentic Heritage Flavors</p>
+            </div>
+
+            <div class="gh-branch-card">
+                <img src="./delhi.webp" alt="">
+                <h3>New York</h3>
+                <p>Modern Luxury Cuisine</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= FAVORITE DISHES ================= -->
+<section class="gh-dishes">
+    <div class="gh-container">
+
+        <h2 class="gh-section-title">Guest Favorite Dishes</h2>
+
+        <div class="gh-dish-grid">
+
+            <div class="gh-dish-card">
+                <img src="./pasta.webp" alt="">
+                <h3>Truffle Pasta</h3>
+                <p>
+                    Handmade pasta with creamy truffle sauce and parmesan.
+                </p>
+            </div>
+
+            <div class="gh-dish-card">
+                <img src="./steak.webp" alt="">
+                <h3>Grilled Salmon</h3>
+                <p>
+                    Fresh Atlantic salmon with chef special herbs.
+                </p>
+            </div>
+
+            <div class="gh-dish-card">
+                <img src="./brownie.webp" alt="">
+                <h3>Signature Dessert</h3>
+                <p>
+                    Sweet luxury crafted for unforgettable endings.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= BOOKING FORM ================= -->
+<section class="gh-booking-section">
+    <div class="gh-container">
+
+        <div class="gh-booking-box">
+            <h2>Book Your Table</h2>
+
+            <form id="bookingForm">
+
+                <div class="gh-form-row">
+                    <input type="text" id="fullName" placeholder="Full Name">
+                    <input type="email" id="email" placeholder="Email Address">
+                </div>
+
+                <div class="gh-form-row">
+                    <input type="text" id="phone" placeholder="Phone Number">
+                    <select id="branch">
+                        <option value="">Select Branch</option>
+                        <option>Switzerland</option>
+                        <option>Dubai</option>
+                        <option>Chennai</option>
+                        <option>New York</option>
+                    </select>
+                </div>
+
+                <div class="gh-form-row">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                </div>
+
+                <div class="gh-form-row">
+                    <select id="guests">
+                        <option value="">Guests</option>
+                        <option>1-2 Guests</option>
+                        <option>3-5 Guests</option>
+                        <option>6-10 Guests</option>
+                        <option>10+ Guests</option>
+                    </select>
+                </div>
+
+                <textarea id="message" rows="5" placeholder="Special Requests"></textarea>
+
+                <button type="submit" class="gh-book-btn">
+                    Book Table
+                </button>
+
+                <p id="errorMsg" class="gh-error"></p>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SUCCESS POPUP -->
+<div class="gh-popup" id="successPopup">
+    <div class="gh-popup-box">
+        <h2>Table Booked Successfully!</h2>
+        <p>Thank you for choosing Grand House.</p>
+    </div>
+</div>
+
+<style>
+    /* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Segoe UI",sans-serif;
+    background:#fff8f2;
+    color:#222;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+.gh-container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.gh-section-title{
+    text-align:center;
+    font-size:clamp(2rem,4vw,3.5rem);
+    margin-bottom:50px;
+}
+
+/* ================= HERO ================= */
+.gh-reserve-hero{
+    height:100vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.gh-reserve-hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url("./hero11.webp") center/cover no-repeat;
+    animation:heroZoom 10s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.12);}
+}
+
+.gh-hero-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+}
+
+.gh-hero-content{
+    position:relative;
+    z-index:2;
+    color:#fff;
+    max-width:900px;
+    padding:20px;
+}
+
+.gh-badge{
+    display:inline-block;
+    background:#e56b2f;
+    padding:10px 24px;
+    border-radius:40px;
+    margin-bottom:25px;
+    font-weight:600;
+}
+
+.gh-hero-content h1{
+    font-size:clamp(2.5rem,6vw,5rem);
+    margin-bottom:20px;
+}
+
+.gh-hero-content p{
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* ================= INTRO ================= */
+.gh-book-intro{
+    padding:100px 0 60px;
+}
+
+.gh-intro-text{
+    text-align:center;
+    max-width:1000px;
+    margin:auto;
+}
+
+.gh-intro-text h2{
+    font-size:42px;
+    margin-bottom:25px;
+}
+
+.gh-intro-text p{
+    color:#666;
+    line-height:2;
+}
+
+/* ================= BRANCHES ================= */
+.gh-branches{
+    padding:80px 0;
+}
+
+.gh-branch-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.gh-branch-card{
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:.4s;
+}
+
+.gh-branch-card:hover{
+    transform:translateY(-12px);
+}
+
+.gh-branch-card img{
+    height:260px;
+    object-fit:cover;
+}
+
+.gh-branch-card h3{
+    padding:20px 20px 8px;
+    font-size:24px;
+}
+
+.gh-branch-card p{
+    padding:0 20px 20px;
+    color:#666;
+}
+
+/* ================= DISHES ================= */
+.gh-dishes{
+    padding:80px 0;
+}
+
+.gh-dish-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.gh-dish-card{
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:.4s;
+}
+
+.gh-dish-card:hover{
+    transform:scale(1.03);
+}
+
+.gh-dish-card img{
+    height:320px;
+    object-fit:cover;
+}
+
+.gh-dish-card h3{
+    padding:20px 20px 10px;
+}
+
+.gh-dish-card p{
+    padding:0 20px 24px;
+    line-height:1.7;
+    color:#666;
+}
+
+/* ================= FORM ================= */
+.gh-booking-section{
+    padding:100px 0;
+}
+
+.gh-booking-box{
+    background:white;
+    padding:50px;
+    border-radius:30px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.gh-booking-box h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:42px;
+}
+
+.gh-form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.gh-form-row input,
+.gh-form-row select,
+textarea{
+    width:100%;
+    padding:18px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    outline:none;
+    font-size:15px;
+}
+
+textarea{
+    margin-bottom:20px;
+    resize:none;
+}
+
+.gh-book-btn{
+    width:100%;
+    border:none;
+    padding:18px;
+    border-radius:40px;
+    background:#e56b2f;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.gh-book-btn:hover{
+    transform:translateY(-3px);
+}
+
+.gh-error{
+    color:red;
+    margin-top:15px;
+    font-weight:600;
+}
+
+/* ================= POPUP ================= */
+.gh-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.gh-popup-box{
+    background:white;
+    padding:50px;
+    border-radius:24px;
+    text-align:center;
+    width:90%;
+    max-width:450px;
+}
+
+.gh-popup-box h2{
+    color:#e56b2f;
+    margin-bottom:20px;
+}
+
+/* ================= LAPTOP ================= */
+@media(max-width:1200px){
+    .gh-branch-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gh-dish-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* ================= TABLET ================= */
+@media(max-width:992px){
+    .gh-form-row{
+        grid-template-columns:1fr;
+    }
+
+    .gh-booking-box{
+        padding:35px;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+    .gh-reserve-hero{
+        height:80vh;
+    }
+
+    .gh-hero-content p{
+        font-size:15px;
+    }
+
+    .gh-intro-text h2,
+    .gh-booking-box h2{
+        font-size:30px;
+    }
+
+    .gh-branch-grid,
+    .gh-dish-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gh-booking-box{
+        padding:25px;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+@media(max-width:480px){
+    .gh-badge{
+        font-size:12px;
+    }
+
+    .gh-hero-content h1{
+        font-size:2rem;
+    }
+}
+
+.invalid{
+    border:2px solid red !important;
+}
+
+.hidden{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 0.9s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+</style>
+
+<script>
+    /* ================= BOOKING FORM VALIDATION ================= */
+    const bookingForm = document.getElementById("bookingForm");
+    const errorMsg = document.getElementById("errorMsg");
+    const popup = document.getElementById("successPopup");
+    
+    bookingForm.addEventListener("submit", function(e){
+        e.preventDefault();
+    
+        const fullName = document.getElementById("fullName");
+        const email = document.getElementById("email");
+        const phone = document.getElementById("phone");
+        const branch = document.getElementById("branch");
+        const date = document.getElementById("date");
+        const time = document.getElementById("time");
+        const guests = document.getElementById("guests");
+        const message = document.getElementById("message");
+    
+        const fields = [
+            fullName, email, phone,
+            branch, date, time,
+            guests, message
+        ];
+    
+        fields.forEach(field => field.classList.remove("invalid"));
+    
+        const namePattern = /^[A-Za-z\s]+$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^[0-9]{10}$/;
+    
+        let valid = true;
+    
+        if(!namePattern.test(fullName.value.trim())){
+            fullName.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(!emailPattern.test(email.value.trim())){
+            email.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(!phonePattern.test(phone.value.trim())){
+            phone.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(branch.value === ""){
+            branch.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(date.value === ""){
+            date.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(time.value === ""){
+            time.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(guests.value === ""){
+            guests.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(message.value.trim() === ""){
+            message.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(!valid){
+            errorMsg.textContent = "Please fill details correctly";
+            return;
+        }
+    
+        errorMsg.textContent = "";
+        popup.style.display = "flex";
+    
+        setTimeout(() => {
+            window.location.href = "./404.html";
+        }, 2000);
+    });
+    
+    
+    /* ================= LOAD ANIMATION ================= */
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("show");
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+    
+    document.querySelectorAll(
+        ".gh-branch-card, .gh-dish-card, .gh-booking-box, .gh-intro-text"
+    ).forEach(el=>{
+        el.classList.add("hidden");
+        observer.observe(el);
+    });
+    </script>
+
+<footer class="rstfooter-section">
+    
+    <div class="rstfooter-container">
+
+        <!-- Column 1 -->
+        <div class="rstfooter-col">
+            <a href="index.html" class="rstfooter-logo">
+                <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+            <p>
+                Experience delicious food, premium ambiance and unforgettable
+                dining moments with our chef-crafted menu.
+            </p>
+
+            <div class="rstfooter-social">
+                <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="./404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                <a href="./404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="rstfooter-col">
+            <h3>Working Hours</h3>
+
+            <ul class="rstfooter-hours">
+                <li><span>Mon - Fri</span><span>09:00 - 22:00</span></li>
+                <li><span>Saturday</span><span>11:00 - 00:00</span></li>
+                <li><span>Sunday</span><span>11:00 - 23:00</span></li>
+                <li><span>Happy Hour</span><span>17:00 - 21:00</span></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="rstfooter-col">
+            <h3>Contact Us</h3>
+
+            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> booking@restaurant.com</p>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="rstfooter-col">
+            <h3>Newsletter</h3>
+            <p>Receive latest updates from us.</p>
+
+            <form id="rstfooterForm">
+                <input type="email" id="rstfooterEmail" placeholder="Enter Email">
+                <button type="submit">Subscribe</button>
+            </form>
+
+            <small id="rstfooterMsg"></small>
+        </div>
+
+    </div>
+
+    <div class="rstfooter-bottom">
+        © 2026 Stackly Restaurant. All Rights Reserved.
+    </div>
+
+</footer>
+
+<style>
+    .rstfooter-section{
+    background:#111;
+    color:white;
+    padding:70px 6% 20px;
+}
+
+.rstfooter-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+}
+
+.rstfooter-col h3{
+    margin-bottom:25px;
+    color:#d96a3c;
+}
+
+.rstfooter-col p{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.rstfooter-logo img{
+    width:160px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.rstfooter-social{
+    display:flex;
+    gap:15px;
+}
+
+.rstfooter-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.rstfooter-social a:hover{
+    background:#d96a3c;
+}
+
+.rstfooter-hours{
+    list-style:none;
+    padding:0;
+}
+
+.rstfooter-hours li{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    color:#bbb;
+}
+
+#rstfooterForm{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#rstfooterForm input{
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+#rstfooterForm button{
+    padding:14px;
+    border:none;
+    background:#d96a3c;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+#rstfooterMsg{
+    display:block;
+    margin-top:10px;
+    color:#ff7b7b;
+}
+
+.rstfooter-bottom{
+    text-align:center;
+    border-top:1px solid #333;
+    margin-top:50px;
+    padding-top:20px;
+    color:#999;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rstfooter-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rstfooter-container{
+        grid-template-columns:1fr;
+    }
+
+    .rstfooter-hours li{
+        flex-direction:column;
+        gap:5px;
+    }
+}
+</style>
+
+<script>
+    document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("rstfooterEmail").value.trim();
+    const msg = document.getElementById("rstfooterMsg");
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(emailPattern.test(email)){
+        msg.style.color = "#4CAF50";
+        msg.innerText = "Email verified ✓";
+
+        setTimeout(()=>{
+            window.location.href = "404.html";
+        },1500);
+    } else {
+        msg.style.color = "#ff7b7b";
+        msg.innerText = "Fill details correctly";
+    }
+});
+</script>
+

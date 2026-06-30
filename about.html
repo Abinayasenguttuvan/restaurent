@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant </title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+}
+
+/* HEADER */
+.stkhd-header{
+    position:sticky;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:#111;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.stkhd-container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.stkhd-logo{
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+}
+
+.stkhd-logo img{
+    height:55px;
+}
+
+.stkhd-logo-text{
+    font-size:32px;
+    font-weight:800;
+    color:#d96a3c;
+    letter-spacing:1px;
+}
+
+/* NAV */
+.stkhd-nav{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.stkhd-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.stkhd-nav a:hover{
+    color:#d96a3c;
+}
+
+/* BUTTON */
+.stkhd-btn{
+    text-decoration:none;
+    background:#531b02;
+    color:white;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:700;
+    transition:.4s;
+}
+
+.stkhd-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HAMBURGER */
+.stkhd-menu-btn,
+.stkhd-close-btn{
+    display:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .stkhd-nav{
+        gap:20px;
+    }
+
+    .stkhd-btn{
+        padding:12px 22px;
+        font-size:14px;
+    }
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+
+    .stkhd-menu-btn{
+        display:block;
+    }
+
+    .stkhd-nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:300px;
+        height:100vh;
+        background:#1a1a1a;
+        flex-direction:column;
+        justify-content:center;
+        gap:30px;
+        transition:.45s ease;
+        z-index:99999;
+    }
+
+    .stkhd-nav.active{
+        right:0;
+    }
+
+    .stkhd-close-btn{
+        display:block;
+        position:absolute;
+        top:25px;
+        right:25px;
+    }
+
+    .stkhd-nav a{
+        font-size:20px;
+    }
+
+    .stkhd-btn{
+        margin-top:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="stkhd-header">
+    <div class="stkhd-container">
+
+        <!-- LOGO -->
+        <a href="./index.html" class="stkhd-logo">
+            <!-- Use image if needed -->
+            <!-- <img src="./orange-logo.webp"> -->
+            <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+        </a>
+
+        <!-- HAMBURGER -->
+        <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="stkhd-nav" id="stkhdNav">
+
+            <div class="stkhd-close-btn" onclick="stkhdCloseMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About Us</a>
+            <a href="./reservation.html">Reservation</a>
+            <a href="./contact.html">Contact Us</a>
+
+            <a href="./login.html" class="stkhd-btn">Book a Table</a>
+        </nav>
+
+    </div>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+    duration:1200,
+    once:true
+});
+</script>
+</header>
+
+<script>
+function stkhdOpenMenu(){
+    document.getElementById("stkhdNav").classList.add("active");
+}
+
+function stkhdCloseMenu(){
+    document.getElementById("stkhdNav").classList.remove("active");
+}
+</script>
+
+
+
+<section class="gh-about-hero">
+    <div class="gh-about-hero-bg"></div>
+    <div class="gh-about-hero-overlay"></div>
+
+    <div class="gh-about-hero-content">
+        <span class="gh-about-badge">Our Story</span>
+        <h1 class="gh-about-title">About Grand House</h1>
+        <p class="gh-about-tagline">
+            A legacy of culinary excellence since 1985
+        </p>
+    </div>
+</section>
+
+<section class="gh-about-section">
+    <div class="gh-about-container">
+
+        <div class="gh-about-image-wrapper">
+            <img src="./re1.webp" class="gh-about-image">
+            <div class="gh-about-image-accent"></div>
+        </div>
+
+        <div class="gh-about-content">
+            <span class="gh-section-number">Our Heritage</span>
+            <h2 class="gh-section-title">
+                A Story of Passion & Excellence
+            </h2>
+
+            <p class="gh-about-description">
+                Founded in 1985 by Chef Antonio Rossi...
+            </p>
+
+            <p class="gh-about-description">
+                Our philosophy is simple...
+            </p>
+
+            <div class="gh-about-quote">
+                "Cooking is not just about ingredients and recipes..."
+            </div>
+
+            <div class="gh-about-stats">
+                <div class="gh-stat-item">
+                    <span class="gh-stat-number">39</span>
+                    <span class="gh-stat-label">Years of Excellence</span>
+                </div>
+
+                <div class="gh-stat-item">
+                    <span class="gh-stat-number">15k+</span>
+                    <span class="gh-stat-label">Happy Guests</span>
+                </div>
+
+                <div class="gh-stat-item">
+                    <span class="gh-stat-number">3</span>
+                    <span class="gh-stat-label">Michelin Stars</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* =========================
+   GRAND HOUSE ABOUT PAGE
+   Non-conflicting CSS
+========================= */
+
+.gh-about-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.gh-about-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url("./re.webp") center/cover no-repeat;
+    transform: scale(1.05);
+}
+
+.gh-about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.6)
+    );
+}
+
+.gh-about-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 900px;
+}
+
+.gh-about-badge {
+    display: inline-block;
+    padding: 10px 22px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 50px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.gh-about-title {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.gh-about-tagline {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.7;
+}
+
+/* ABOUT SECTION */
+
+.gh-about-section {
+    padding: 90px 20px;
+    background: #f7f4f1;
+}
+
+.gh-about-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.gh-about-image-wrapper {
+    position: relative;
+}
+
+.gh-about-image {
+    width: 100%;
+    display: block;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+.gh-about-image-accent {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #ff9800;
+    bottom: -20px;
+    right: -20px;
+    border-radius: 25px;
+    z-index: -1;
+}
+
+.gh-section-number {
+    color: #ff9800;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.gh-section-title {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 24px;
+    line-height: 1.3;
+}
+
+.gh-about-description {
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.gh-about-quote {
+    margin: 30px 0;
+    padding-left: 22px;
+    border-left: 4px solid #ff9800;
+    font-style: italic;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.gh-about-stats {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.gh-stat-item {
+    min-width: 120px;
+}
+
+.gh-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.gh-stat-label {
+    color: #666;
+    font-size: 14px;
+}
+
+/* TABLET */
+
+@media (max-width: 992px) {
+    .gh-about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .gh-about-content {
+        text-align: center;
+    }
+
+    .gh-about-quote {
+        text-align: left;
+    }
+
+    .gh-about-stats {
+        justify-content: center;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+    .gh-about-hero {
+        min-height: 65vh;
+    }
+
+    .gh-about-section {
+        padding: 60px 16px;
+    }
+
+    .gh-about-image-accent {
+        width: 70px;
+        height: 70px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .gh-about-stats {
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+    }
+
+    .gh-stat-item {
+        text-align: center;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+    .gh-about-badge {
+        font-size: 12px;
+        padding: 8px 18px;
+    }
+
+    .gh-about-tagline {
+        font-size: 14px;
+    }
+
+    .gh-section-title {
+        font-size: 1.6rem;
+    }
+
+    .gh-about-description {
+        font-size: 14px;
+    }
+}
+</style>
+
+
+<section class="rphilo-section">
+
+    <div class="rphilo-container">
+
+        <!-- Images -->
+        <div class="rphilo-images">
+            <div class="rphilo-img-small rphilo-reveal-left">
+                <img src="./chicken grill.webp" alt="">
+            </div>
+
+            <div class="rphilo-img-large rphilo-reveal-up">
+                <img src="./chef.webp" alt="">
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="rphilo-content rphilo-reveal-right">
+            <span class="rphilo-subtitle">QUALITY & BALANCE</span>
+            <h2>OUR FOOD<br>PHILOSOPHY</h2>
+
+            <p>
+                Simple and balanced. Our chefs bring together authentic
+                flavors and premium ingredients to create a unique culinary
+                experience filled with taste, creativity, and passion.
+            </p>
+
+            <a href="404.html" class="rphilo-btn">LEARN MORE</a>
+        </div>
+
+    </div>
+</section>
+
+
+<style>
+    .rphilo-section{
+    width:100%;
+    padding:100px 6%;
+    background:#f7f4f1;
+    overflow:hidden;
+}
+
+.rphilo-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+/* LEFT IMAGE AREA */
+.rphilo-images{
+    position:relative;
+    width:50%;
+    min-height:650px;
+}
+
+.rphilo-img-small{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:42%;
+    z-index:1;
+}
+
+.rphilo-img-large{
+    position:absolute;
+    left:20%;
+    top:0;
+    width:70%;
+    z-index:2;
+}
+
+.rphilo-images img{
+    width:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .6s ease;
+}
+
+.rphilo-images img:hover{
+    transform:scale(1.05);
+}
+
+/* RIGHT CONTENT */
+.rphilo-content{
+    width:45%;
+}
+
+.rphilo-subtitle{
+    color:#d96a3c;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:2px;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.rphilo-content h2{
+    font-size:68px;
+    line-height:1.05;
+    margin-bottom:30px;
+    font-family:serif;
+}
+
+.rphilo-content p{
+    color:#666;
+    line-height:1.9;
+    font-size:20px;
+    margin-bottom:35px;
+}
+
+.rphilo-btn{
+    display:inline-block;
+    padding:16px 34px;
+    background:#d96a3c;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    transition:.4s;
+}
+
+.rphilo-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* ANIMATION */
+.rphilo-reveal-left,
+.rphilo-reveal-up,
+.rphilo-reveal-right{
+    opacity:0;
+}
+
+.rphilo-reveal-left{
+    transform:translateX(-80px);
+    transition:1s ease;
+}
+
+.rphilo-reveal-up{
+    transform:translateY(80px);
+    transition:1.2s ease;
+}
+
+.rphilo-reveal-right{
+    transform:translateX(80px);
+    transition:1.4s ease;
+}
+
+.rphilo-show{
+    opacity:1;
+    transform:translate(0,0);
+}
+
+/* TABLET */
+@media (max-width:992px){
+    .rphilo-container{
+        flex-direction:column;
+    }
+
+    .rphilo-images,
+    .rphilo-content{
+        width:100%;
+    }
+
+    .rphilo-images{
+        min-height:500px;
+    }
+
+    .rphilo-content h2{
+        font-size:48px;
+    }
+}
+
+/* MOBILE */
+@media (max-width:768px){
+    .rphilo-section{
+        padding:60px 20px;
+    }
+
+    .rphilo-images{
+        min-height:auto;
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+        position:static;
+    }
+
+    .rphilo-img-small,
+    .rphilo-img-large{
+        position:static;
+        width:100%;
+    }
+
+    .rphilo-content{
+        text-align:center;
+    }
+
+    .rphilo-content h2{
+        font-size:34px;
+    }
+
+    .rphilo-content p{
+        font-size:16px;
+    }
+}
+</style>
+
+<script>
+    const rphiloObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("rphilo-show");
+        }
+    });
+},{threshold:0.25});
+
+document.querySelectorAll(
+    ".rphilo-reveal-left, .rphilo-reveal-up, .rphilo-reveal-right"
+).forEach(el=>{
+    rphiloObserver.observe(el);
+});
+</script>
+
+
+<section class="gh-visit-section">
+
+    <div class="gh-visit-container">
+
+        <!-- Left Content -->
+        <div class="gh-visit-content">
+            <div class="gh-visit-topline">
+                <span class="gh-line"></span>
+                RIGHT HERE WAITING
+            </div>
+
+            <h2 class="gh-visit-title">
+                VISIT OUR <br> RESTAURANT
+            </h2>
+
+            <p class="gh-visit-text">
+                We see our customers as invited guests to a party, and we are the hosts.
+                Grand House delivers unforgettable dining with premium flavors, warm
+                hospitality and elegant ambience.
+            </p>
+
+            <p class="gh-contact-info">
+                Chennai, Tamil Nadu, India <br>
+                M: booking@grandhouse.com <br>
+                T: +91 9876543210
+            </p>
+
+            <a href="./404.html" class="gh-visit-btn">
+                GET DIRECTIONS
+            </a>
+        </div>
+
+        <!-- Right Images -->
+        <div class="gh-visit-images">
+            <img src="./hero10.webp" alt="">
+            <img src="./hero11.webp" alt="">
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ===== Visit Section ===== */
+.gh-visit-section{
+    background:#f8f6f3;
+    padding:100px 5%;
+    overflow:hidden;
+}
+
+.gh-visit-container{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:50px;
+    align-items:center;
+}
+
+.gh-visit-content{
+    max-width:520px;
+}
+
+.gh-visit-topline{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    color:#e56b2f;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:30px;
+}
+
+.gh-line{
+    width:70px;
+    height:2px;
+    background:#e56b2f;
+}
+
+.gh-visit-title{
+    font-size:clamp(2rem,5vw,4.6rem);
+    line-height:1.1;
+    margin-bottom:30px;
+    font-family:serif;
+}
+
+.gh-visit-text{
+    color:#555;
+    line-height:1.9;
+    margin-bottom:24px;
+    font-size:17px;
+}
+
+.gh-contact-info{
+    color:#444;
+    line-height:2;
+    margin-bottom:35px;
+    font-size:18px;
+}
+
+.gh-visit-btn{
+    display:inline-block;
+    padding:18px 36px;
+    background:#e56b2f;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    letter-spacing:1px;
+    transition:0.4s;
+}
+
+.gh-visit-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(229,107,47,0.3);
+}
+
+.gh-visit-images{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.gh-visit-images img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.gh-visit-images img:hover{
+    transform:scale(1.03);
+}
+
+/* Laptop */
+@media (max-width:1200px){
+    .gh-visit-images img{
+        height:450px;
+    }
+}
+
+/* Tablet */
+@media (max-width:992px){
+    .gh-visit-container{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .gh-visit-content{
+        max-width:100%;
+        text-align:center;
+    }
+
+    .gh-visit-topline{
+        justify-content:center;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .gh-visit-section{
+        padding:70px 20px;
+    }
+
+    .gh-visit-images{
+        grid-template-columns:1fr;
+    }
+
+    .gh-visit-images img{
+        height:320px;
+    }
+
+    .gh-visit-text,
+    .gh-contact-info{
+        font-size:15px;
+    }
+
+    .gh-visit-btn{
+        padding:14px 28px;
+        font-size:14px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+    .gh-visit-title{
+        font-size:2rem;
+    }
+
+    .gh-line{
+        width:40px;
+    }
+}
+</style>
+
+<section class="gh-quote-section" data-aos="fade-up">
+
+    <div class="gh-quote-overlay"></div>
+
+    <div class="gh-quote-content">
+
+        <div class="gh-quote-icon">❝</div>
+
+        <p class="gh-quote-text">
+            “A distinctive, well-preserved and comfortable space,
+            high-quality products, authentic cuisine, food and drinks
+            are done flawlessly.”
+        </p>
+
+        <h3 class="gh-quote-author">
+            Chef Arjun Raman
+        </h3>
+
+    </div>
+
+</section>
+
+<style>
+    /* ===== Quote Banner Section ===== */
+.gh-quote-section{
+    position:relative;
+    min-height:600px;
+    background:url("./pizza\ \(2\).webp") center center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    padding:60px 20px;
+}
+
+.gh-quote-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+}
+
+.gh-quote-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    text-align:center;
+    color:#fff;
+}
+
+.gh-quote-icon{
+    font-size:80px;
+    color:#e56b2f;
+    margin-bottom:20px;
+    line-height:1;
+}
+
+.gh-quote-text{
+    font-size:clamp(1.5rem,3vw,3rem);
+    line-height:1.7;
+    font-family:serif;
+    margin-bottom:35px;
+}
+
+.gh-quote-author{
+    font-size:clamp(1.6rem,2vw,2.4rem);
+    color:#fff;
+    font-style:italic;
+    font-family:cursive;
+    font-weight:400;
+}
+
+/* Laptop */
+@media (max-width:1200px){
+    .gh-quote-section{
+        min-height:500px;
+    }
+}
+
+/* Tablet */
+@media (max-width:992px){
+    .gh-quote-text{
+        line-height:1.6;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px){
+    .gh-quote-section{
+        min-height:420px;
+        padding:50px 18px;
+    }
+
+    .gh-quote-icon{
+        font-size:50px;
+    }
+
+    .gh-quote-text{
+        font-size:20px;
+    }
+
+    .gh-quote-author{
+        font-size:24px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+    .gh-quote-section{
+        min-height:350px;
+    }
+
+    .gh-quote-text{
+        font-size:17px;
+        line-height:1.8;
+    }
+
+    .gh-quote-author{
+        font-size:20px;
+    }
+}
+</style>
+
+<section class="gh-chef-section">
+
+    <div class="gh-chef-container">
+
+        <!-- Left Content -->
+        <div class="gh-chef-content" data-aos="fade-right">
+
+            <span class="gh-chef-label">OUR EXECUTIVE CHEF</span>
+
+            <h2 class="gh-chef-title">
+                Meet Chef Arjun Raman
+            </h2>
+
+            <p class="gh-chef-text">
+                With over 18 years of culinary excellence, Chef Arjun Raman
+                brings passion, creativity, and authentic flavors to every dish.
+                His vision combines traditional South Indian heritage with modern
+                fine-dining presentation, creating unforgettable dining experiences.
+            </p>
+
+            <p class="gh-chef-text">
+                From handpicked spices to carefully curated seasonal ingredients,
+                every plate crafted by Chef Arjun tells a story of taste and tradition.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="gh-chef-social">
+                <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="./404.html"><i class="fab fa-linkedin-in"></i></a>
+                <a href="./404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+
+        </div>
+
+        <!-- Right Image -->
+        <div class="gh-chef-image-wrapper" data-aos="fade-left">
+            <img src="./chef.webp" alt="Executive Chef">
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ===== Executive Chef Section ===== */
+.gh-chef-section{
+    padding:100px 5%;
+    background:#fffaf5;
+    overflow:hidden;
+}
+
+.gh-chef-container{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.gh-chef-content{
+    max-width:600px;
+}
+
+.gh-chef-label{
+    display:inline-block;
+    color:#e56b2f;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.gh-chef-title{
+    font-size:clamp(2rem,4vw,4rem);
+    line-height:1.2;
+    margin-bottom:25px;
+    font-family:serif;
+}
+
+.gh-chef-text{
+    color:#555;
+    line-height:1.9;
+    font-size:17px;
+    margin-bottom:20px;
+}
+
+.gh-chef-social{
+    display:flex;
+    gap:18px;
+    margin-top:35px;
+}
+
+.gh-chef-social a{
+    width:50px;
+    height:50px;
+    background:#e56b2f;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:18px;
+    transition:0.4s;
+}
+
+.gh-chef-social a:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 24px rgba(229,107,47,0.3);
+}
+
+.gh-chef-image-wrapper{
+    position:relative;
+}
+
+.gh-chef-image-wrapper img{
+    width:100%;
+    height:650px;
+    object-fit:cover;
+    border-radius:28px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    transition:0.4s;
+}
+
+.gh-chef-image-wrapper img:hover{
+    transform:scale(1.02);
+}
+
+/* Laptop */
+@media (max-width:1200px){
+    .gh-chef-image-wrapper img{
+        height:540px;
+    }
+}
+
+/* Tablet */
+@media (max-width:992px){
+    .gh-chef-container{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .gh-chef-content{
+        max-width:100%;
+        text-align:center;
+    }
+
+    .gh-chef-social{
+        justify-content:center;
+    }
+
+    .gh-chef-image-wrapper{
+        max-width:650px;
+        margin:auto;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px){
+    .gh-chef-section{
+        padding:70px 20px;
+    }
+
+    .gh-chef-title{
+        font-size:2rem;
+    }
+
+    .gh-chef-text{
+        font-size:15px;
+    }
+
+    .gh-chef-social{
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    .gh-chef-social a{
+        width:42px;
+        height:42px;
+        font-size:15px;
+    }
+
+    .gh-chef-image-wrapper img{
+        height:350px;
+        border-radius:20px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+    .gh-chef-image-wrapper img{
+        height:300px;
+    }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="rstfooter-section">
+
+    <div class="rstfooter-container">
+
+        <!-- Column 1 -->
+        <div class="rstfooter-col">
+            <a href="index.html" class="rstfooter-logo">
+                <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+            <p>
+                Experience delicious food, premium ambiance and unforgettable
+                dining moments with our chef-crafted menu.
+            </p>
+
+            <div class="rstfooter-social">
+                <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="./404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                <a href="./404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="rstfooter-col">
+            <h3>Working Hours</h3>
+
+            <ul class="rstfooter-hours">
+                <li><span>Mon - Fri</span><span>09:00 - 22:00</span></li>
+                <li><span>Saturday</span><span>11:00 - 00:00</span></li>
+                <li><span>Sunday</span><span>11:00 - 23:00</span></li>
+                <li><span>Happy Hour</span><span>17:00 - 21:00</span></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="rstfooter-col">
+            <h3>Contact Us</h3>
+
+            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> booking@restaurant.com</p>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="rstfooter-col">
+            <h3>Newsletter</h3>
+            <p>Receive latest updates from us.</p>
+
+            <form id="rstfooterForm">
+                <input type="email" id="rstfooterEmail" placeholder="Enter Email">
+                <button type="submit">Subscribe</button>
+            </form>
+
+            <small id="rstfooterMsg"></small>
+        </div>
+
+    </div>
+
+    <div class="rstfooter-bottom">
+        © 2026 Stackly Restaurant. All Rights Reserved.
+    </div>
+
+</footer>
+
+<style>
+    .rstfooter-section{
+    background:#111;
+    color:white;
+    padding:70px 6% 20px;
+}
+
+.rstfooter-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+}
+
+.rstfooter-col h3{
+    margin-bottom:25px;
+    color:#d96a3c;
+}
+
+.rstfooter-col p{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.rstfooter-logo img{
+    width:160px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.rstfooter-social{
+    display:flex;
+    gap:15px;
+}
+
+.rstfooter-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.rstfooter-social a:hover{
+    background:#d96a3c;
+}
+
+.rstfooter-hours{
+    list-style:none;
+    padding:0;
+}
+
+.rstfooter-hours li{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    color:#bbb;
+}
+
+#rstfooterForm{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#rstfooterForm input{
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+#rstfooterForm button{
+    padding:14px;
+    border:none;
+    background:#d96a3c;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+#rstfooterMsg{
+    display:block;
+    margin-top:10px;
+    color:#ff7b7b;
+}
+
+.rstfooter-bottom{
+    text-align:center;
+    border-top:1px solid #333;
+    margin-top:50px;
+    padding-top:20px;
+    color:#999;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rstfooter-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rstfooter-container{
+        grid-template-columns:1fr;
+    }
+
+    .rstfooter-hours li{
+        flex-direction:column;
+        gap:5px;
+    }
+}
+</style>
+
+<script>
+    document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("rstfooterEmail").value.trim();
+    const msg = document.getElementById("rstfooterMsg");
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(emailPattern.test(email)){
+        msg.style.color = "#4CAF50";
+        msg.innerText = "Email verified ✓";
+
+        setTimeout(()=>{
+            window.location.href = "404.html";
+        },1500);
+    } else {
+        msg.style.color = "#ff7b7b";
+        msg.innerText = "Fill details correctly";
+    }
+});
+</script>

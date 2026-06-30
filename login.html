@@ -1,0 +1,419 @@
+<div class="container">
+
+    <!-- Left side -->
+    <div class="login-left">
+  
+      <a href="index.html" class="restaurant-logo">
+        <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+      </a>
+  
+      <h2>Welcome to Grand House</h2>
+      <p class="welcome-text">
+        Experience luxury dining, world-class hospitality and unforgettable flavors.
+        Login to manage reservations, bookings and customer services.
+      </p>
+  
+      <div class="form-group">
+        <label for="accountType">Role</label>
+        <select id="accountType">
+          <option value="customer">Customer</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+      </div>
+  
+      <div class="remember-forgot">
+        <label><input type="checkbox" id="remember"> Remember me</label>
+        <a href="./404.html">Forgot Password?</a>
+      </div>
+  
+      <button class="btn" onclick="login()">Login</button>
+  
+      <p id="errorMsg" class="error-msg">Fill details correctly</p>
+  
+      <div class="signup">
+        Don't have an account?
+        <a href="./register.html">Register now</a>
+      </div>
+    </div>
+  
+    <!-- Right side -->
+    <div class="login-right">
+      <img src="./hero9.webp" alt="Dish">
+      <div class="reviews">
+        <p>"Best dining experience ever!"</p>
+        <p>"Amazing ambience and delicious dishes."</p>
+        <p>"Luxury dining at its finest."</p>
+      </div>
+    </div>
+  
+  </div>
+
+  <style>
+    /* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html,body{
+    height:100%;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:url('./switch.webp') no-repeat center center/cover;
+    position:relative;
+    overflow:auto;
+}
+
+/* DARK OVERLAY */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+    z-index:0;
+}
+
+/* MAIN CONTAINER */
+.container{
+    position:relative;
+    z-index:1;
+    display:flex;
+    width:90%;
+    max-width:1100px;
+    border-radius:24px;
+    overflow:hidden;
+    backdrop-filter:blur(18px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.45);
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* LEFT SIDE */
+.login-left{
+    flex:1;
+    padding:50px 40px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+}
+
+.restaurant-logo{
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.restaurant-logo img{
+    width:120px;
+    transition:0.3s;
+}
+
+.restaurant-logo:hover img{
+    transform:scale(1.06);
+}
+
+.login-left h2{
+    font-size:34px;
+    margin-bottom:15px;
+    color:#ff9d2f;
+}
+
+.welcome-text{
+    color:#ddd;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+/* FORM */
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    color:#f0f0f0;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select{
+    height:48px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    padding:0 14px;
+    background:rgba(255,255,255,0.12);
+    color:white;
+}
+
+.form-group input::placeholder{
+    color:#ccc;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border:1px solid #ff9d2f;
+}
+
+/* SELECT */
+select option{
+    color:black;
+}
+
+/* REMEMBER */
+.remember-forgot{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    font-size:13px;
+}
+
+.remember-forgot a{
+    color:#ff9d2f;
+    text-decoration:none;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:40px;
+    background:linear-gradient(135deg,#ff7b00,#ffb347);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px rgba(255,140,0,0.5);
+}
+
+/* ERROR */
+.error-msg{
+    display:none;
+    color:#ff7070;
+    margin-top:14px;
+    text-align:center;
+    font-size:14px;
+}
+
+/* SIGNUP */
+.signup{
+    margin-top:20px;
+    text-align:center;
+    color:white;
+}
+
+.signup a{
+    color:#ff9d2f;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* RIGHT SIDE */
+.login-right{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,0.25);
+    padding:40px 30px;
+    text-align:center;
+}
+
+.login-right img{
+    width:300px;
+    max-width:100%;
+    border-radius:20px;
+    margin-bottom:30px;
+    animation:floatDish 3s infinite ease-in-out;
+}
+
+@keyframes floatDish{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+.reviews{
+    color:#ddd;
+    line-height:1.8;
+}
+
+.reviews p{
+    margin-bottom:14px;
+    font-style:italic;
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .container{
+        flex-direction:column;
+    }
+
+    .login-left,
+    .login-right{
+        padding:35px 28px;
+    }
+}
+
+/* MOBILE */
+@media(max-width:576px){
+    body{
+        padding:15px;
+    }
+
+    .container{
+        width:100%;
+        border-radius:16px;
+    }
+
+    .login-left{
+        padding:25px 18px;
+    }
+
+    .login-left h2{
+        font-size:24px;
+    }
+
+    .welcome-text{
+        font-size:14px;
+    }
+
+    .form-group input,
+    .form-group select{
+        height:44px;
+        font-size:14px;
+    }
+
+    .remember-forgot{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .btn{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .login-right{
+        padding:24px 18px;
+    }
+
+    .login-right img{
+        width:220px;
+    }
+
+    .reviews{
+        font-size:14px;
+    }
+
+    .restaurant-logo img{
+        width:90px;
+    }
+}
+  </style>
+
+<script>
+    
+// window.onload = function () {
+//     const savedUser =
+//         localStorage.getItem("loggedUser") ||
+//         sessionStorage.getItem("loggedUser");
+
+//     if (savedUser) {
+//         const user = JSON.parse(savedUser);
+
+//         if (user.accountType === "admin") {
+//             window.location.href = "admin.html";
+//         } else {
+//             window.location.href = "customer.html";
+//         }
+//     }
+// };
+
+function login() {
+    const accountType = document.getElementById("accountType").value;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const remember = document.getElementById("remember").checked;
+    const errorMsg = document.getElementById("errorMsg");
+
+    errorMsg.style.display = "none";
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    /* Validation */
+    if (email === "" || password === "") {
+        errorMsg.innerText = "Fill details correctly";
+        errorMsg.style.display = "block";
+        return;
+    }
+
+    if (!emailPattern.test(email)) {
+        errorMsg.innerText = "Enter valid email";
+        errorMsg.style.display = "block";
+        return;
+    }
+
+    /* Create user object */
+    const user = {
+        email: email,
+        accountType: accountType
+    };
+
+    /* Generate name from email */
+    let userName = email.split("@")[0];
+
+    /* Save separate values for dashboard */
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userRole", accountType);
+    localStorage.setItem("userName", userName);
+
+    /* Save full user object */
+    if (remember) {
+        localStorage.setItem("loggedUser", JSON.stringify(user));
+    } else {
+        sessionStorage.setItem("loggedUser", JSON.stringify(user));
+    }
+
+    /* Redirect */
+    if (accountType === "admin") {
+        window.location.href = "admin.html";
+    } else {
+        window.location.href = "customer.html";
+    }
+}
+</script>

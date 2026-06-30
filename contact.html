@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant </title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+}
+
+/* HEADER */
+.stkhd-header{
+    position:sticky;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:#111;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.stkhd-container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.stkhd-logo{
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+}
+
+.stkhd-logo img{
+    height:55px;
+}
+
+.stkhd-logo-text{
+    font-size:32px;
+    font-weight:800;
+    color:#d96a3c;
+    letter-spacing:1px;
+}
+
+/* NAV */
+.stkhd-nav{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.stkhd-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.stkhd-nav a:hover{
+    color:#d96a3c;
+}
+
+/* BUTTON */
+.stkhd-btn{
+    text-decoration:none;
+    background:#531b02;
+    color:white;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:700;
+    transition:.4s;
+}
+
+.stkhd-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HAMBURGER */
+.stkhd-menu-btn,
+.stkhd-close-btn{
+    display:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .stkhd-nav{
+        gap:20px;
+    }
+
+    .stkhd-btn{
+        padding:12px 22px;
+        font-size:14px;
+    }
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+
+    .stkhd-menu-btn{
+        display:block;
+    }
+
+    .stkhd-nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:300px;
+        height:100vh;
+        background:#1a1a1a;
+        flex-direction:column;
+        justify-content:center;
+        gap:30px;
+        transition:.45s ease;
+        z-index:99999;
+    }
+
+    .stkhd-nav.active{
+        right:0;
+    }
+
+    .stkhd-close-btn{
+        display:block;
+        position:absolute;
+        top:25px;
+        right:25px;
+    }
+
+    .stkhd-nav a{
+        font-size:20px;
+    }
+
+    .stkhd-btn{
+        margin-top:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="stkhd-header">
+    <div class="stkhd-container">
+
+        <!-- LOGO -->
+        <a href="./index.html" class="stkhd-logo">
+            <!-- Use image if needed -->
+            <!-- <img src="./orange-logo.webp"> -->
+            <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+        </a>
+
+        <!-- HAMBURGER -->
+        <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="stkhd-nav" id="stkhdNav">
+
+            <div class="stkhd-close-btn" onclick="stkhdCloseMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About Us</a>
+            <a href="./reservation.html">Reservation</a>
+            <a href="./contact.html">Contact Us</a>
+
+            <a href="./login.html" class="stkhd-btn">Book a Table</a>
+        </nav>
+
+    </div>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+    duration:1200,
+    once:true
+});
+</script>
+</header>
+
+<script>
+function stkhdOpenMenu(){
+    document.getElementById("stkhdNav").classList.add("active");
+}
+
+function stkhdCloseMenu(){
+    document.getElementById("stkhdNav").classList.remove("active");
+}
+</script>
+
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <span class="hero-badge">Get in Touch</span>
+        <h1 class="hero-title">Contact Grand House</h1>
+        <p class="hero-tagline">
+            Reserve your table or contact our hospitality team
+        </p>
+    </div>
+</section>
+
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+    <div class="contact-container">
+
+        <!-- LEFT SIDE -->
+        <div class="contact-info-side">
+            <span class="section-number">Contact</span>
+            <h2 class="section-title">Reach Out</h2>
+
+            <p class="contact-description">
+                Whether you want to reserve a table, host an event,
+                or ask about our menu, we are happy to assist you.
+            </p>
+
+            <div class="contact-info-box">
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Address</h4>
+                        <p>salem, Tamil nadu</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p>+41 (0)81 123 4567</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>booking@thestackly.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Opening Hours</h4>
+                        <p>11:00 AM — 11:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
+        <div class="contact-form-wrapper">
+
+            <div class="form-header">
+                <h3>Send a Message</h3>
+                <p>We'll get back within 24 hours</p>
+            </div>
+
+            <form id="contactForm">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" id="firstName" placeholder="John">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" id="lastName" placeholder="Doe">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" id="email" placeholder="john@gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="text" id="phone" placeholder="9876543210">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Subject *</label>
+                    <select id="subject">
+                        <option value="">Select Subject</option>
+                        <option>General Inquiry</option>
+                        <option>Reservation</option>
+                        <option>Private Event</option>
+                        <option>Feedback</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Message *</label>
+                    <textarea id="message" rows="5" placeholder="Write your message"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+
+                <p id="formError" class="form-error"></p>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#fff8f2;
+    color:#222;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+.contact-container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+/* ================= HERO ================= */
+.hero{
+    position:relative;
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    background:url("./hero6\ \(1\).webp") center/cover no-repeat;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,0.65),
+        rgba(229,107,47,0.45)
+    );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    color:#fff;
+    max-width:850px;
+    padding:20px;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:10px 22px;
+    border-radius:30px;
+    background:#e56b2f;
+    margin-bottom:25px;
+    font-weight:600;
+}
+
+.hero-title{
+    font-size:clamp(2.5rem,6vw,5rem);
+    margin-bottom:20px;
+}
+
+.hero-tagline{
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* ================= CONTACT ================= */
+.contact-section{
+    padding:100px 0;
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:50px;
+    align-items:start;
+}
+
+.contact-info-side{
+    padding:20px;
+}
+
+.section-number{
+    color:#e56b2f;
+    font-weight:700;
+    display:block;
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.contact-description{
+    color:#555;
+    line-height:1.9;
+    margin-bottom:35px;
+}
+
+.contact-info-box{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.contact-item{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+}
+
+.contact-icon{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#e56b2f;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    flex-shrink:0;
+}
+
+.contact-details h4{
+    margin-bottom:8px;
+}
+
+.contact-details p{
+    color:#555;
+    line-height:1.7;
+}
+
+/* ================= FORM ================= */
+.contact-form-wrapper{
+    background:#fff;
+    padding:40px;
+    border-radius:24px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.form-header{
+    margin-bottom:30px;
+}
+
+.form-header h3{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.form-header p{
+    color:#666;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:16px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    outline:none;
+    font-size:15px;
+}
+
+.form-group textarea{
+    resize:none;
+}
+
+.submit-btn{
+    width:100%;
+    border:none;
+    background:#e56b2f;
+    color:white;
+    padding:18px;
+    border-radius:40px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 24px rgba(229,107,47,0.3);
+}
+
+.form-error{
+    margin-top:16px;
+    color:red;
+    font-size:14px;
+    font-weight:600;
+}
+
+/* invalid field */
+.invalid{
+    border:2px solid red !important;
+}
+
+/* ================= FAQ ================= */
+.faq-section{
+    padding:100px 5%;
+    background:#fff;
+}
+
+.faq-container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.faq-header{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.faq-item{
+    border-bottom:1px solid #ddd;
+    padding:25px 0;
+}
+
+.faq-question{
+    display:flex;
+    justify-content:space-between;
+    cursor:pointer;
+}
+
+.faq-question h3{
+    font-size:20px;
+}
+
+.faq-answer{
+    display:none;
+    padding-top:20px;
+    color:#555;
+    line-height:1.8;
+}
+
+/* ================= MAP ================= */
+.map-section{
+    padding:80px 5%;
+}
+
+.map-container iframe{
+    width:100%;
+    height:500px;
+    border:none;
+    border-radius:20px;
+}
+
+/* ================= TABLET ================= */
+@media(max-width:992px){
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:34px;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+    .hero{
+        min-height:70vh;
+    }
+
+    .hero-tagline{
+        font-size:16px;
+    }
+
+    .contact-section{
+        padding:70px 0;
+    }
+
+    .contact-form-wrapper{
+        padding:25px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    .faq-question h3{
+        font-size:17px;
+        width:90%;
+    }
+
+    .map-container iframe{
+        height:350px;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+@media(max-width:480px){
+
+    .hero-title{
+        font-size:2rem;
+    }
+
+    .hero-badge{
+        font-size:12px;
+        padding:8px 16px;
+    }
+
+    .submit-btn{
+        font-size:15px;
+    }
+}
+</style>
+
+<script>
+    /* ================= FORM VALIDATION ================= */
+    const form = document.getElementById("contactForm");
+    const errorMsg = document.getElementById("formError");
+    
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
+    
+    function clearErrors() {
+        const fields = [firstName, lastName, email, phone, subject, message];
+        fields.forEach(field => field.classList.remove("invalid"));
+    }
+    
+    form.addEventListener("submit", function(e){
+        e.preventDefault();
+        clearErrors();
+    
+        const namePattern = /^[A-Za-z\s]+$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^[0-9]{10}$/;
+    
+        let valid = true;
+    
+        if(!namePattern.test(firstName.value.trim())){
+            firstName.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(!namePattern.test(lastName.value.trim())){
+            lastName.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(!emailPattern.test(email.value.trim())){
+            email.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(!phonePattern.test(phone.value.trim())){
+            phone.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(subject.value === ""){
+            subject.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(message.value.trim() === ""){
+            message.classList.add("invalid");
+            valid = false;
+        }
+    
+        if(!valid){
+            errorMsg.textContent = "Please fill details correctly";
+            return;
+        }
+    
+        errorMsg.textContent = "";
+        window.location.href = "./404.html";
+    });
+    
+    
+    /* ================= FAQ ACCORDION ================= */
+    function toggleFaq(element){
+        const faqItem = element.parentElement;
+        const answer = faqItem.querySelector(".faq-answer");
+        const icon = faqItem.querySelector(".faq-icon i");
+    
+        document.querySelectorAll(".faq-item").forEach(item=>{
+            if(item !== faqItem){
+                item.querySelector(".faq-answer").style.display = "none";
+                item.querySelector(".faq-icon i").className = "fas fa-plus";
+            }
+        });
+    
+        if(answer.style.display === "block"){
+            answer.style.display = "none";
+            icon.className = "fas fa-plus";
+        } else {
+            answer.style.display = "block";
+            icon.className = "fas fa-minus";
+        }
+    }
+    </script>
+
+
+<section class="gh-ig-section">
+
+    <div class="gh-ig-container">
+
+        <div class="gh-ig-header">
+            <span class="gh-ig-badge">Instagram Feed</span>
+            <h2>Follow Our Food Journey</h2>
+            <p>
+                Fresh dishes, chef specials, behind-the-scenes moments,
+                and unforgettable dining experiences.
+            </p>
+        </div>
+
+        <div class="gh-ig-grid">
+
+            <!-- Card 1 -->
+            <a href="./404.html" class="gh-ig-card">
+                <img src="./pasta.webp" alt="Dish 1">
+
+                <div class="gh-ig-overlay">
+                    <h3>Signature Pasta</h3>
+                    <p>Fresh handmade pasta with chef’s special sauce.</p>
+
+                    <div class="gh-ig-stats">
+                        <span>❤️ 1.2k</span>
+                        <span>💬 148</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="./404.html" class="gh-ig-card">
+                <img src="./pizza (2).webp" alt="Dish 2">
+
+                <div class="gh-ig-overlay">
+                    <h3>Luxury Dining</h3>
+                    <p>Elegant ambience for unforgettable evenings.</p>
+
+                    <div class="gh-ig-stats">
+                        <span>❤️ 2.4k</span>
+                        <span>💬 301</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="./404.html" class="gh-ig-card">
+                <img src="./chicken grill.webp" alt="Dish 3">
+
+                <div class="gh-ig-overlay">
+                    <h3>Chef Special</h3>
+                    <p>Prepared fresh every evening.</p>
+
+                    <div class="gh-ig-stats">
+                        <span>❤️ 985</span>
+                        <span>💬 90</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="./404.html" class="gh-ig-card">
+                <img src="./brownie.webp" alt="Dish 4">
+
+                <div class="gh-ig-overlay">
+                    <h3>Dessert Heaven</h3>
+                    <p>Sweet endings made memorable.</p>
+
+                    <div class="gh-ig-stats">
+                        <span>❤️ 1.8k</span>
+                        <span>💬 212</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* ================= INSTAGRAM FEED ================= */
+.gh-ig-section{
+    padding:100px 5%;
+    background:linear-gradient(135deg,#fff8f2,#fff2e6);
+}
+
+.gh-ig-container{
+    max-width:1400px;
+    margin:auto;
+}
+
+.gh-ig-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.gh-ig-badge{
+    display:inline-block;
+    background:#e56b2f;
+    color:white;
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.gh-ig-header h2{
+    font-size:clamp(2rem,5vw,4rem);
+    margin-bottom:18px;
+}
+
+.gh-ig-header p{
+    max-width:800px;
+    margin:auto;
+    color:#666;
+    line-height:1.9;
+}
+
+.gh-ig-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+}
+
+.gh-ig-card{
+    position:relative;
+    border-radius:24px;
+    overflow:hidden;
+    height:420px;
+    display:block;
+    text-decoration:none;
+}
+
+.gh-ig-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.8s ease;
+}
+
+/* Hover Zoom */
+.gh-ig-card:hover img{
+    transform:scale(1.15);
+}
+
+/* Overlay */
+.gh-ig-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent 20%,
+        rgba(0,0,0,0.82)
+    );
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:28px;
+    color:white;
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.45s ease;
+}
+
+.gh-ig-card:hover .gh-ig-overlay{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.gh-ig-overlay h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.gh-ig-overlay p{
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.gh-ig-stats{
+    display:flex;
+    justify-content:space-between;
+    font-size:15px;
+    font-weight:600;
+}
+
+/* ================= LAPTOP ================= */
+@media (max-width:1200px){
+    .gh-ig-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* ================= TABLET ================= */
+@media (max-width:992px){
+    .gh-ig-card{
+        height:380px;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+    .gh-ig-section{
+        padding:70px 20px;
+    }
+
+    .gh-ig-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .gh-ig-card{
+        height:340px;
+    }
+
+    .gh-ig-overlay{
+        opacity:1;
+        transform:none;
+    }
+
+    .gh-ig-overlay h3{
+        font-size:20px;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+@media (max-width:480px){
+    .gh-ig-header h2{
+        font-size:1.7rem;
+    }
+
+    .gh-ig-header p{
+        font-size:14px;
+    }
+
+    .gh-ig-card{
+        height:300px;
+    }
+}
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <footer class="rstfooter-section">
+    
+        <div class="rstfooter-container">
+    
+            <!-- Column 1 -->
+            <div class="rstfooter-col">
+                <a href="index.html" class="rstfooter-logo">
+                    <img src="./white.webp" alt="Stackly Logo"
+    style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+    
+                <p>
+                    Experience delicious food, premium ambiance and unforgettable
+                    dining moments with our chef-crafted menu.
+                </p>
+    
+                <div class="rstfooter-social">
+                    <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fab fa-x-twitter"></i></a>
+                    <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                    <a href="./404.html"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+    
+            <!-- Column 2 -->
+            <div class="rstfooter-col">
+                <h3>Working Hours</h3>
+    
+                <ul class="rstfooter-hours">
+                    <li><span>Mon - Fri</span><span>09:00 - 22:00</span></li>
+                    <li><span>Saturday</span><span>11:00 - 00:00</span></li>
+                    <li><span>Sunday</span><span>11:00 - 23:00</span></li>
+                    <li><span>Happy Hour</span><span>17:00 - 21:00</span></li>
+                </ul>
+            </div>
+    
+            <!-- Column 3 -->
+            <div class="rstfooter-col">
+                <h3>Contact Us</h3>
+    
+                <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+                <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> booking@restaurant.com</p>
+            </div>
+    
+            <!-- Column 4 -->
+            <div class="rstfooter-col">
+                <h3>Newsletter</h3>
+                <p>Receive latest updates from us.</p>
+    
+                <form id="rstfooterForm">
+                    <input type="email" id="rstfooterEmail" placeholder="Enter Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+    
+                <small id="rstfooterMsg"></small>
+            </div>
+    
+        </div>
+    
+        <div class="rstfooter-bottom">
+            © 2026 Stackly Restaurant. All Rights Reserved.
+        </div>
+    
+    </footer>
+    
+    <style>
+        .rstfooter-section{
+        background:#111;
+        color:white;
+        padding:70px 6% 20px;
+    }
+    
+    .rstfooter-container{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:40px;
+    }
+    
+    .rstfooter-col h3{
+        margin-bottom:25px;
+        color:#d96a3c;
+    }
+    
+    .rstfooter-col p{
+        color:#bbb;
+        line-height:1.8;
+        margin-bottom:15px;
+    }
+    
+    .rstfooter-logo img{
+        width:160px;
+        margin-bottom:20px;
+        cursor:pointer;
+    }
+    
+    .rstfooter-social{
+        display:flex;
+        gap:15px;
+    }
+    
+    .rstfooter-social a{
+        width:42px;
+        height:42px;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#222;
+        color:white;
+        text-decoration:none;
+        transition:.4s;
+    }
+    
+    .rstfooter-social a:hover{
+        background:#d96a3c;
+    }
+    
+    .rstfooter-hours{
+        list-style:none;
+        padding:0;
+    }
+    
+    .rstfooter-hours li{
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:15px;
+        color:#bbb;
+    }
+    
+    #rstfooterForm{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+    }
+    
+    #rstfooterForm input{
+        padding:14px;
+        border:none;
+        border-radius:8px;
+        outline:none;
+    }
+    
+    #rstfooterForm button{
+        padding:14px;
+        border:none;
+        background:#d96a3c;
+        color:white;
+        border-radius:8px;
+        cursor:pointer;
+        font-weight:700;
+    }
+    
+    #rstfooterMsg{
+        display:block;
+        margin-top:10px;
+        color:#ff7b7b;
+    }
+    
+    .rstfooter-bottom{
+        text-align:center;
+        border-top:1px solid #333;
+        margin-top:50px;
+        padding-top:20px;
+        color:#999;
+    }
+    
+    /* Tablet */
+    @media(max-width:992px){
+        .rstfooter-container{
+            grid-template-columns:repeat(2,1fr);
+        }
+    }
+    
+    /* Mobile */
+    @media(max-width:768px){
+        .rstfooter-container{
+            grid-template-columns:1fr;
+        }
+    
+        .rstfooter-hours li{
+            flex-direction:column;
+            gap:5px;
+        }
+    }
+    </style>
+    
+    <script>
+        document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+        e.preventDefault();
+    
+        const email = document.getElementById("rstfooterEmail").value.trim();
+        const msg = document.getElementById("rstfooterMsg");
+    
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    
+        if(emailPattern.test(email)){
+            msg.style.color = "#4CAF50";
+            msg.innerText = "Email verified ✓";
+    
+            setTimeout(()=>{
+                window.location.href = "404.html";
+            },1500);
+        } else {
+            msg.style.color = "#ff7b7b";
+            msg.innerText = "Fill details correctly";
+        }
+    });
+    </script>
+

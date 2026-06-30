@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#111,#2a1d16,#111);
+    overflow:hidden;
+}
+
+/* Floating Food Icons */
+.r404-food{
+    position:absolute;
+    font-size:40px;
+    animation:r404float 6s infinite ease-in-out;
+    opacity:.25;
+}
+
+.food1{top:10%; left:12%;}
+.food2{top:18%; right:14%; animation-delay:1s;}
+.food3{bottom:16%; left:20%; animation-delay:2s;}
+.food4{bottom:10%; right:18%; animation-delay:3s;}
+
+@keyframes r404float{
+    0%,100%{transform:translateY(0px) rotate(0deg);}
+    50%{transform:translateY(-35px) rotate(12deg);}
+}
+
+/* Main Card */
+.r404-box{
+    width:90%;
+    max-width:900px;
+    text-align:center;
+    padding:60px 40px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.08);
+    animation:r404fade 1.2s ease;
+}
+
+@keyframes r404fade{
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.r404-number{
+    font-size:180px;
+    font-weight:900;
+    line-height:1;
+    color:#ff7a39;
+    text-shadow:0 0 20px rgba(255,122,57,.3);
+    animation:r404bounce 2s infinite;
+}
+
+@keyframes r404bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+.r404-title{
+    font-size:48px;
+    color:white;
+    margin-top:10px;
+}
+
+.r404-text{
+    color:#d0d0d0;
+    font-size:20px;
+    line-height:1.8;
+    margin:25px auto 40px;
+    max-width:650px;
+}
+
+.r404-btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:18px 38px;
+    background:#ff7a39;
+    color:white;
+    font-weight:700;
+    border-radius:50px;
+    transition:.4s;
+}
+
+.r404-btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 14px 35px rgba(255,122,57,.4);
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .r404-number{
+        font-size:140px;
+    }
+
+    .r404-title{
+        font-size:36px;
+    }
+}
+
+@media(max-width:768px){
+    .r404-box{
+        padding:40px 20px;
+    }
+
+    .r404-number{
+        font-size:90px;
+    }
+
+    .r404-title{
+        font-size:28px;
+    }
+
+    .r404-text{
+        font-size:16px;
+    }
+
+    .r404-btn{
+        padding:15px 28px;
+    }
+
+    .r404-food{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="r404-food food1">🍕</div>
+<div class="r404-food food2">🍔</div>
+<div class="r404-food food3">🍟</div>
+<div class="r404-food food4">🍜</div>
+
+<div class="r404-box">
+    <div class="r404-number">404</div>
+
+    <h1 class="r404-title">Oops! Page Not Found</h1>
+
+    <p class="r404-text">
+        Looks like this delicious page is missing from our menu.
+        Let’s get you back to the homepage for more tasty experiences.
+    </p>
+
+    <a href="index.html" class="r404-btn">Back To Home</a>
+</div>
+
+</body>
+</html>

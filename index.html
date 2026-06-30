@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant </title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+}
+
+/* HEADER */
+.stkhd-header{
+    position:sticky;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:#111;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
+}
+
+.stkhd-container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.stkhd-logo{
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+}
+
+.stkhd-logo img{
+    height:55px;
+}
+
+.stkhd-logo-text{
+    font-size:32px;
+    font-weight:800;
+    color:#d96a3c;
+    letter-spacing:1px;
+}
+
+/* NAV */
+.stkhd-nav{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.stkhd-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.stkhd-nav a:hover{
+    color:#d96a3c;
+}
+
+/* BUTTON */
+.stkhd-btn{
+    text-decoration:none;
+    background:#531b02;
+    color:white;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:700;
+    transition:.4s;
+}
+
+.stkhd-btn:hover{
+    transform:translateY(-3px);
+    
+}
+
+/* HAMBURGER */
+.stkhd-menu-btn,
+.stkhd-close-btn{
+    display:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .stkhd-nav{
+        gap:20px;
+    }
+
+    .stkhd-btn{
+        padding:12px 22px;
+        font-size:14px;
+    }
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+
+    .stkhd-menu-btn{
+        display:block;
+    }
+
+    .stkhd-nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:300px;
+        height:100vh;
+        background:#1a1a1a;
+        flex-direction:column;
+        justify-content:center;
+        gap:30px;
+        transition:.45s ease;
+        z-index:99999;
+    }
+
+    .stkhd-nav.active{
+        right:0;
+    }
+
+    .stkhd-close-btn{
+        display:block;
+        position:absolute;
+        top:25px;
+        right:25px;
+    }
+
+    .stkhd-nav a{
+        font-size:20px;
+    }
+
+    .stkhd-btn{
+        margin-top:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="stkhd-header">
+    <div class="stkhd-container">
+
+        <!-- LOGO -->
+        <a href="./index.html" class="stkhd-logo">
+            <!-- Use image if needed -->
+            <!-- <img src="./orange-logo.webp"> -->
+            <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+        </a>
+
+        <!-- HAMBURGER -->
+        <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="stkhd-nav" id="stkhdNav">
+
+            <div class="stkhd-close-btn" onclick="stkhdCloseMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About Us</a>
+            <a href="./reservation.html">Reservation</a>
+            <a href="./contact.html">Contact Us</a>
+
+            <a href="./login.html" class="stkhd-btn">Book a Table</a>
+        </nav>
+
+    </div>
+</header>
+
+<script>
+function stkhdOpenMenu(){
+    document.getElementById("stkhdNav").classList.add("active");
+}
+
+function stkhdCloseMenu(){
+    document.getElementById("stkhdNav").classList.remove("active");
+}
+</script>
+
+
+
+
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Slides */
+.slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:1.5s ease;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation:zoom 8s infinite alternate ease-in-out;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.15);
+    }
+}
+
+/* Overlay */
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+    z-index:2;
+}
+
+/* Content */
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    z-index:5;
+    text-align:center;
+    width:90%;
+    max-width:1100px;
+    opacity:0;
+    animation:fadeUp 1.5s forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translate(-50%,-30%);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%);
+    }
+}
+
+.subtitle{
+    color:#ffb74d;
+    font-size:22px;
+    font-weight:500;
+    margin-bottom:15px;
+    letter-spacing:1px;
+}
+
+.hero-content h1{
+    font-family:'Playfair Display', serif;
+    font-size:72px;
+    line-height:1.2;
+    margin-bottom:25px;
+}
+
+.hero-content h1 span{
+    color:#ff9800;
+}
+
+.hero-content p{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+/* Features */
+.features{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.feature-box{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(8px);
+    padding:18px 24px;
+    border-radius:16px;
+    min-width:180px;
+    transition:0.4s;
+}
+
+.feature-box:hover{
+    transform:translateY(-5px);
+}
+
+.feature-box i{
+    font-size:28px;
+    color:#ff9800;
+    margin-bottom:10px;
+}
+
+.feature-box h3{
+    font-size:18px;
+    font-weight:600;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:15px 34px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:600;
+    transition:0.4s;
+    text-align:center;
+}
+
+.btn-primary{
+    background:#ff9800;
+    color:white;
+}
+
+.btn-primary:hover{
+    transform:scale(1.05);
+}
+
+.btn-secondary{
+    background:white;
+    color:black;
+}
+
+.btn-secondary:hover{
+    transform:scale(1.05);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .hero-content h1{
+        font-size:58px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .hero-content h1{
+        font-size:48px;
+    }
+
+    .hero-content p{
+        font-size:18px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .hero{
+        height:85vh;
+    }
+
+    .hero-content h1{
+        font-size:34px;
+    }
+
+    .subtitle{
+        font-size:18px;
+    }
+
+    .hero-content p{
+        font-size:15px;
+    }
+
+    .feature-box{
+        min-width:140px;
+        padding:15px;
+    }
+
+    .feature-box h3{
+        font-size:14px;
+    }
+
+    .btn{
+        padding:12px 26px;
+        font-size:15px;
+    }
+}
+
+@media(max-width:480px){
+    .hero-content h1{
+        font-size:28px;
+    }
+
+    .hero-content p{
+        font-size:14px;
+    }
+
+    .features{
+        gap:12px;
+    }
+
+    .feature-box{
+        min-width:130px;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+    <div class="slide active">
+        <img src="./re.webp">
+    </div>
+
+    <div class="slide">
+        <img src="./re1.webp">
+    </div>
+
+    <div class="slide">
+        <img src="./re2.webp">
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="subtitle">Welcome To Our Restaurant</div>
+
+        <h1>Delicious Food & <span>Wonderful Dining</span> Experience</h1>
+
+        <p>
+            Enjoy freshly prepared meals crafted with premium ingredients,
+            rich flavors, and unforgettable moments for every food lover.
+        </p>
+
+        <div class="features">
+            <div class="feature-box">
+                <i class="fa-solid fa-utensils"></i>
+                <h3>Tasty Food</h3>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-truck"></i>
+                <h3>Fast Delivery</h3>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Fresh Ingredients</h3>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <div class="buttons">
+                <a href="./404.html" class="btn btn-primary">Order Now</a>
+                <a href="./404.html" class="btn btn-secondary">View Menu</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+function autoSlide(){
+    slides[index].classList.remove("active");
+    index=(index+1)%slides.length;
+    slides[index].classList.add("active");
+}
+
+setInterval(autoSlide,4000);
+</script>
+
+
+
+<section class="about-section">
+    <div class="about-container">
+
+        <!-- Left Content -->
+        <div class="about-content animate-left">
+            <span class="about-subtitle">REFRESH YOUR TASTE BUDS</span>
+
+            <h2>Enjoy An Exceptional Journey of Taste</h2>
+
+            <p>
+                We see our customers as invited guests to a party, and we are the hosts.
+                It’s our job every day to make every important aspect of customer
+                experience a little better.
+            </p>
+
+            <a href="./404.html" class="discover-btn">DISCOVER MORE</a>
+        </div>
+
+        <!-- Right Images -->
+        <div class="about-images animate-right">
+            <img src="./re5.webp" class="img-top" alt="">
+            <img src="./re.webp" class="img-bottom" alt="">
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* ABOUT SECTION */
+.about-section{
+    width:100%;
+    padding:80px 6%;
+    background:#f7f1ee;
+    overflow:hidden;
+}
+
+.about-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+/* LEFT */
+.about-content{
+    flex:1;
+}
+
+.about-subtitle{
+    color:#d96a3c;
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:2px;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.about-content h2{
+    font-size:68px;
+    line-height:1.1;
+    margin-bottom:25px;
+    font-family:serif;
+}
+
+.about-content p{
+    font-size:18px;
+    color:#555;
+    line-height:1.9;
+    max-width:650px;
+    margin-bottom:35px;
+}
+
+.discover-btn{
+    display:inline-block;
+    padding:16px 32px;
+    background:#d96a3c;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* RIGHT IMAGES */
+.about-images{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.about-images img{
+    width:100%;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.img-top{
+    height:420px;
+}
+
+.img-bottom{
+    height:240px;
+}
+
+/* Animation */
+.animate-left,
+.animate-right{
+    opacity:0;
+    transition:1s ease;
+}
+
+.animate-left{
+    transform:translateX(-100px);
+}
+
+.animate-right{
+    transform:translateX(100px);
+}
+
+.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Laptop */
+@media (max-width:1200px){
+    .about-content h2{
+        font-size:54px;
+    }
+}
+
+/* Tablet */
+@media (max-width:992px){
+    .about-container{
+        flex-direction:column;
+    }
+
+    .about-content h2{
+        font-size:42px;
+    }
+
+    .img-top{
+        height:350px;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px){
+    .about-section{
+        padding:60px 20px;
+    }
+
+    .about-content h2{
+        font-size:32px;
+    }
+
+    .about-content p{
+        font-size:15px;
+    }
+
+    .about-subtitle{
+        font-size:14px;
+    }
+
+    .img-top{
+        height:240px;
+    }
+
+    .img-bottom{
+        height:170px;
+    }
+}
+
+@media (max-width:480px){
+    .about-content h2{
+        font-size:28px;
+    }
+}
+</style>
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{threshold:0.2});
+
+document.querySelectorAll(".animate-left, .animate-right").forEach((el)=>{
+    observer.observe(el);
+});
+</script>
+
+
+<section class="food-gallery" id="gallery">
+
+    <div class="food-gallery-header">
+        <!-- <span class="food-number">02</span> -->
+        <h2 class="food-title">Our Signature Flavors</h2>
+        <p class="food-subtitle">
+            Discover the art of taste crafted with passion, tradition, and premium ingredients
+        </p>
+    </div>
+
+    <div class="food-gallery-slider">
+
+        <div class="food-item">
+            <img src="hero3.webp" alt="">
+            <div class="food-overlay">
+                <h3>Grilled Perfection</h3>
+                <p>Freshly grilled premium cuts with herbs</p>
+            </div>
+        </div>
+
+        <div class="food-item">
+            <img src="hero4.webp" alt="">
+            <div class="food-overlay">
+                <h3>Chef’s Special</h3>
+                <p>Handcrafted dishes inspired by tradition</p>
+            </div>
+        </div>
+
+        <div class="food-item">
+            <img src="hero8.webp" alt="">
+            <div class="food-overlay">
+                <h3>Fine Dining</h3>
+                <p>Luxury plated dishes for unforgettable moments</p>
+            </div>
+        </div>
+
+        <div class="food-item">
+            <img src="./hero6 (1).webp" alt="">
+            <div class="food-overlay">
+                <h3>Warm Ambience</h3>
+                <p>Elegant interiors for perfect dining</p>
+            </div>
+        </div>
+
+        <div class="food-item">
+            <img src="./hero7.webp" alt="">
+            <div class="food-overlay">
+                <h3>Fresh Kitchen</h3>
+                <p>Prepared live with passion and care</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="food-gallery-content">
+        <p class="food-text">
+            From farm-fresh ingredients to expertly crafted dishes, every plate tells a story.
+            Experience exceptional flavors, warm hospitality, and unforgettable dining moments.
+        </p>
+
+        <a href="./404.html" class="food-btn">Explore Menu</a>
+    </div>
+
+</section>
+
+<Style>
+    /* GALLERY SECTION */
+.food-gallery{
+    width:100%;
+    padding:90px 6%;
+    background:#fff8f4;
+}
+
+/* HEADER */
+.food-gallery-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.food-number{
+    font-size:18px;
+    color:#d96a3c;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+.food-title{
+    font-size:60px;
+    margin:15px 0;
+    font-family:serif;
+}
+
+.food-subtitle{
+    font-size:18px;
+    color:#666;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* GALLERY GRID */
+.food-gallery-slider{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.food-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:12px;
+}
+
+.food-item img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.food-item:hover img{
+    transform:scale(1.08);
+}
+
+/* Overlay */
+.food-overlay{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:25px;
+    background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
+    color:white;
+}
+
+.food-overlay h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.food-overlay p{
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* Bottom Content */
+.food-gallery-content{
+    text-align:center;
+    margin-top:60px;
+}
+
+.food-text{
+    max-width:800px;
+    margin:auto;
+    font-size:18px;
+    color:#555;
+    line-height:1.9;
+    margin-bottom:30px;
+}
+
+.food-btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#d96a3c;
+    color:white;
+    padding:15px 35px;
+    font-weight:600;
+    border-radius:5px;
+    transition:.4s;
+}
+
+.food-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .food-title{
+        font-size:48px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .food-gallery-slider{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .food-title{
+        font-size:40px;
+    }
+
+    .food-item img{
+        height:350px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .food-gallery{
+        padding:70px 20px;
+    }
+
+    .food-gallery-slider{
+        grid-template-columns:1fr;
+    }
+
+    .food-title{
+        font-size:30px;
+    }
+
+    .food-subtitle,
+    .food-text{
+        font-size:15px;
+    }
+
+    .food-item img{
+        height:280px;
+    }
+
+    .food-overlay h3{
+        font-size:20px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .food-title{
+        font-size:26px;
+    }
+}
+</Style>
+
+<section class="rstmenu-section">
+
+    <div class="rstmenu-header rstmenu-reveal-up">
+        <!-- <span class="rstmenu-number">03</span> -->
+        <h2>Our Delicious Menu</h2>
+        <p>Fresh dishes crafted with premium ingredients</p>
+    </div>
+
+    <div class="rstmenu-tabs rstmenu-reveal-up">
+        <button class="rstmenu-tab active" onclick="rstmenuSwitch('all',this)">All</button>
+        <button class="rstmenu-tab" onclick="rstmenuSwitch('starter',this)">Starters</button>
+        <button class="rstmenu-tab" onclick="rstmenuSwitch('main',this)">Main Course</button>
+        <button class="rstmenu-tab" onclick="rstmenuSwitch('dessert',this)">Desserts</button>
+    </div>
+
+    <div class="rstmenu-wrapper">
+
+        <div class="rstmenu-images rstmenu-reveal-left" id="rstmenuImages"></div>
+
+        <div class="rstmenu-content rstmenu-reveal-right">
+            <ul id="rstmenuList"></ul>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .rstmenu-section{
+    width:100%;
+    padding:90px 6%;
+    background:#fff8f3;
+    overflow:hidden;
+}
+
+.rstmenu-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.rstmenu-number{
+    color:#d96a3c;
+    font-weight:700;
+    font-size:18px;
+}
+
+.rstmenu-header h2{
+    font-size:55px;
+    margin:15px 0;
+    font-family:serif;
+}
+
+.rstmenu-header p{
+    color:#666;
+    font-size:18px;
+}
+
+.rstmenu-tabs{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.rstmenu-tab{
+    border:none;
+    padding:12px 24px;
+    cursor:pointer;
+    border-radius:40px;
+    background:#f1dfd5;
+    font-weight:600;
+    transition:.3s;
+}
+
+.rstmenu-tab.active,
+.rstmenu-tab:hover{
+    background:#d96a3c;
+    color:#fff;
+}
+
+.rstmenu-wrapper{
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+}
+
+.rstmenu-images{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.rstmenu-images img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:12px;
+    transition:.4s;
+}
+
+.rstmenu-images img:hover{
+    transform:scale(1.04);
+}
+
+.rstmenu-content{
+    flex:1;
+}
+
+#rstmenuList{
+    list-style:none;
+}
+
+.rstmenu-item{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:18px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.rstmenu-item h3{
+    margin-bottom:8px;
+    font-size:22px;
+}
+
+.rstmenu-item p{
+    color:#666;
+    line-height:1.6;
+}
+
+.rstmenu-price{
+    color:#d96a3c;
+    font-size:22px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+/* Animation */
+.rstmenu-reveal-up,
+.rstmenu-reveal-left,
+.rstmenu-reveal-right{
+    opacity:0;
+    transition:1s ease;
+}
+
+.rstmenu-reveal-up{
+    transform:translateY(60px);
+}
+
+.rstmenu-reveal-left{
+    transform:translateX(-80px);
+}
+
+.rstmenu-reveal-right{
+    transform:translateX(80px);
+}
+
+.rstmenu-show{
+    opacity:1;
+    transform:translate(0,0);
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rstmenu-wrapper{
+        flex-direction:column;
+    }
+
+    .rstmenu-header h2{
+        font-size:40px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rstmenu-section{
+        padding:60px 20px;
+    }
+
+    .rstmenu-images{
+        grid-template-columns:1fr;
+    }
+
+    .rstmenu-images img{
+        height:180px;
+    }
+
+    .rstmenu-header h2{
+        font-size:30px;
+    }
+
+    .rstmenu-header p{
+        font-size:15px;
+    }
+
+    .rstmenu-item{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .rstmenu-item h3{
+        font-size:18px;
+    }
+
+    .rstmenu-price{
+        font-size:18px;
+    }
+}
+</style>
+<script>
+const rstmenuData = {
+    all:{
+    images:[
+    "./pasta.webp",
+    "./pizza (2).webp",
+    "./burger (1).webp",
+    "./salad.webp"
+    ],
+    items:[
+    ["Pasta","Creamy white sauce pasta","$18"],
+    ["Pizza","Cheesy handmade pizza","$22"],
+    ["Burger","Loaded chicken burger","$16"],
+    ["Salad","Fresh garden salad","$12"]
+    ]
+    },
+    
+    starter:{
+    images:["./soup.webp","./garlic (1).webp"],
+    items:[
+    ["Soup","Hot veg soup","$10"],
+    ["Garlic Bread","Toasted garlic bread","$8"]
+    ]
+    },
+    
+    main:{
+    images:["./steak.webp","./chicken grill.webp"],
+    items:[
+    ["Steak","Premium grilled steak","$32"],
+    ["Chicken Grill","Spicy grilled chicken","$25"]
+    ]
+    },
+    
+    dessert:{
+    images:["./brownie.webp","./straw ice.webp"],
+    items:[
+    ["Brownie","Chocolate brownie","$12"],
+    ["Ice Cream","Vanilla ice cream","$8"]
+    ]
+    }
+    };
+    
+    function rstmenuSwitch(type, btn){
+    
+    if(btn){
+    document.querySelectorAll(".rstmenu-tab").forEach(tab=>{
+    tab.classList.remove("active");
+    });
+    btn.classList.add("active");
+    }
+    
+    const data = rstmenuData[type];
+    
+    /* Images */
+    let imageHTML = "";
+    data.images.forEach(img=>{
+    imageHTML += `<img src="${img}" alt="">`;
+    });
+    document.getElementById("rstmenuImages").innerHTML = imageHTML;
+    
+    /* Menu Items */
+    let menuHTML = "";
+    data.items.forEach(item=>{
+    menuHTML += `
+    <li class="rstmenu-item">
+    <div>
+    <h3>${item[0]}</h3>
+    <p>${item[1]}</p>
+    </div>
+    <span class="rstmenu-price">${item[2]}</span>
+    </li>`;
+    });
+    document.getElementById("rstmenuList").innerHTML = menuHTML;
+    }
+    
+    rstmenuSwitch('all', document.querySelector('.rstmenu-tab'));
+    
+    /* Scroll Reveal */
+    const rstObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+    if(entry.isIntersecting){
+    entry.target.classList.add("rstmenu-show");
+    }
+    });
+    },{threshold:0.2});
+    
+    document.querySelectorAll(
+    '.rstmenu-reveal-up, .rstmenu-reveal-left, .rstmenu-reveal-right'
+    ).forEach(el=>{
+    rstObserver.observe(el);
+    });
+</script>
+
+<section class="rpromo-section">
+
+    <div class="rpromo-header rpromo-reveal">
+        <span>DISCOVER MORE FLAVORS</span>
+        <h2>Explore Our Specials</h2>
+        <p>Experience delicious dishes, chef specials and refreshing drinks</p>
+    </div>
+
+    <div class="rpromo-grid">
+
+        <div class="rpromo-card large rpromo-reveal">
+            <img src="./pizza (2).webp" onclick="rpromoOpen(this.src)">
+            <div class="rpromo-overlay">
+                <h4>RECOMMENDATIONS</h4>
+                <h2>New Tasting Menus</h2>
+            </div>
+        </div>
+
+        <div class="rpromo-card medium rpromo-reveal">
+            <img src="./hero3.webp" onclick="rpromoOpen(this.src)">
+            <div class="rpromo-overlay">
+                <h4>A LA CARTE</h4>
+                <h2>View Full Menus</h2>
+            </div>
+        </div>
+
+        <div class="rpromo-card small rpromo-reveal">
+            <img src="./hero4.webp" onclick="rpromoOpen(this.src)">
+            <div class="rpromo-overlay">
+                <h4>RECIPES</h4>
+                <h2>Chef Secrets</h2>
+            </div>
+        </div>
+
+        <div class="rpromo-card tall rpromo-reveal">
+            <img src="./hero6 (1).webp" onclick="rpromoOpen(this.src)">
+            <div class="rpromo-overlay">
+                <h4>DRINKS</h4>
+                <h2>Wine List</h2>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="rpromo-modal" id="rpromoModal" onclick="rpromoClose()">
+    <img id="rpromoModalImg">
+</div>
+
+<style>
+    .rpromo-section{
+    padding:90px 5%;
+    background:#f8f5f2;
+    overflow:hidden;
+}
+
+.rpromo-header{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.rpromo-header span{
+    color:#d96a3c;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.rpromo-header h2{
+    font-size:58px;
+    margin:15px 0;
+    font-family:serif;
+}
+
+.rpromo-header p{
+    color:#666;
+}
+
+.rpromo-grid{
+    display:grid;
+    grid-template-columns:2fr 1.3fr 1.3fr;
+    grid-template-rows:280px 280px;
+    gap:18px;
+}
+
+.rpromo-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:14px;
+    cursor:pointer;
+}
+
+.large{grid-row:span 2;}
+.medium{grid-column:span 2;}
+.tall{grid-row:span 2;}
+
+.rpromo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+}
+
+.rpromo-card:hover img{
+    transform:scale(1.08);
+}
+
+.rpromo-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,.7), transparent);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:30px;
+    color:white;
+}
+
+.rpromo-overlay h4{
+    color:#ff7a39;
+    margin-bottom:12px;
+}
+
+.rpromo-overlay h2{
+    font-size:42px;
+    line-height:1.1;
+}
+
+/* Modal */
+.rpromo-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.rpromo-modal img{
+    width:80%;
+    max-width:900px;
+    max-height:85vh;
+    border-radius:16px;
+    animation:rpromoZoom .4s ease;
+}
+
+@keyframes rpromoZoom{
+    from{transform:scale(.5); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+/* Reveal Animation */
+.rpromo-reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.rpromo-show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rpromo-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:auto;
+    }
+
+    .large,.medium,.small,.tall{
+        grid-column:auto;
+        grid-row:auto;
+        height:300px;
+    }
+
+    .rpromo-header h2{
+        font-size:42px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rpromo-section{
+        padding:60px 20px;
+    }
+
+    .rpromo-grid{
+        grid-template-columns:1fr;
+    }
+
+    .large,.medium,.small,.tall{
+        height:260px;
+    }
+
+    .rpromo-header h2{
+        font-size:30px;
+    }
+
+    .rpromo-overlay h2{
+        font-size:28px;
+    }
+}
+</style>
+
+<Script>
+    function rpromoOpen(src){
+    document.getElementById("rpromoModal").style.display="flex";
+    document.getElementById("rpromoModalImg").src=src;
+}
+
+function rpromoClose(){
+    document.getElementById("rpromoModal").style.display="none";
+}
+
+const rpromoObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("rpromo-show");
+        }
+    });
+},{threshold:0.2});
+
+document.querySelectorAll(".rpromo-reveal").forEach(el=>{
+    rpromoObserver.observe(el);
+});
+</Script>
+
+<section class="rbook-section" id="reservation">
+    <div class="rbook-container">
+
+        <!-- Left Content -->
+        <div class="rbook-left">
+            <!-- <span class="rbook-number">05</span> -->
+            <h2 class="rbook-title">Make a Reservation</h2>
+
+            <p class="rbook-desc">
+                Reserve your table for an unforgettable dining experience.
+                For special occasions, private dining, or large groups,
+                please contact us directly.
+            </p>
+
+            <div class="rbook-contact-wrap">
+
+                <div class="rbook-contact">
+                    <div class="rbook-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <p class="rbook-label">Call Us</p>
+                        <h4>+91 98765 43210</h4>
+                    </div>
+                </div>
+
+                <div class="rbook-contact">
+                    <div class="rbook-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <p class="rbook-label">Email Us</p>
+                        <h4>booking@restaurant.com</h4>
+                    </div>
+                </div>
+
+                <div class="rbook-contact">
+                    <div class="rbook-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <p class="rbook-label">Visit Us</p>
+                        <h4>Chennai, Tamil Nadu, India</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Right Form -->
+        <div class="rbook-right">
+            <form id="rbookForm" class="rbook-form">
+
+                <div class="rbook-row">
+                    <div class="rbook-group">
+                        <label>Date</label>
+                        <input type="date" required>
+                    </div>
+
+                    <div class="rbook-group">
+                        <label>Time</label>
+                        <select required>
+                            <option>Select Time</option>
+                            <option>5:00 PM</option>
+                            <option>6:00 PM</option>
+                            <option>7:00 PM</option>
+                            <option>8:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="rbook-row">
+                    <div class="rbook-group">
+                        <label>Guests</label>
+                        <select required>
+                            <option>Guests</option>
+                            <option>1 Person</option>
+                            <option>2 People</option>
+                            <option>3 People</option>
+                            <option>4 People</option>
+                            <option>5+ People</option>
+                        </select>
+                    </div>
+
+                    <div class="rbook-group">
+                        <label>Occasion</label>
+                        <select>
+                            <option>Occasion</option>
+                            <option>Birthday</option>
+                            <option>Anniversary</option>
+                            <option>Date Night</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="rbook-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+
+                <div class="rbook-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+
+                <div class="rbook-group">
+                    <label>Phone</label>
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+
+                <div class="rbook-group">
+                    <label>Special Requests</label>
+                    <textarea rows="4" placeholder="Special requests..."></textarea>
+                </div>
+
+                <button type="submit" class="rbook-btn">
+                    Confirm Reservation
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .rbook-section{
+    width:100%;
+    padding:90px 6%;
+    background:linear-gradient(135deg,#121212,#1f1f1f);
+    overflow:hidden;
+}
+
+.rbook-container{
+    display:flex;
+    gap:50px;
+    align-items:flex-start;
+}
+
+.rbook-left,
+.rbook-right{
+    flex:1;
+}
+
+.rbook-number{
+    color:#d96a3c;
+    font-weight:700;
+    font-size:18px;
+}
+
+.rbook-title{
+    font-size:58px;
+    color:white;
+    margin:20px 0;
+}
+
+.rbook-desc{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.rbook-contact-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.rbook-contact{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.rbook-icon{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(217,106,60,.15);
+    border:1px solid #d96a3c;
+    color:#d96a3c;
+    font-size:20px;
+}
+
+.rbook-label{
+    color:#aaa;
+    margin-bottom:5px;
+}
+
+.rbook-contact h4{
+    color:white;
+    font-size:20px;
+}
+
+.rbook-form{
+    background:#222;
+    padding:35px;
+    border-radius:18px;
+}
+
+.rbook-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.rbook-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.rbook-group label{
+    color:#d96a3c;
+    margin-bottom:8px;
+}
+
+.rbook-group input,
+.rbook-group select,
+.rbook-group textarea{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#333;
+    color:white;
+}
+
+.rbook-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    background:#d96a3c;
+    color:white;
+    font-size:18px;
+    font-weight:700;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.rbook-btn:hover{
+    transform:translateY(-3px);
+}
+
+.rbook-left,
+.rbook-right{
+    opacity:0;
+    transition:1s;
+}
+
+.rbook-left{
+    transform:translateX(-80px);
+}
+
+.rbook-right{
+    transform:translateX(80px);
+}
+
+.rbook-show{
+    opacity:1;
+    transform:translate(0,0);
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rbook-container{
+        flex-direction:column;
+    }
+
+    .rbook-title{
+        font-size:42px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rbook-section{
+        padding:60px 20px;
+    }
+
+    .rbook-row{
+        grid-template-columns:1fr;
+    }
+
+    .rbook-title{
+        font-size:30px;
+    }
+
+    .rbook-form{
+        padding:20px;
+    }
+
+    .rbook-contact h4{
+        font-size:16px;
+    }
+}
+</style>
+<script>
+    const rbookObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("rbook-show");
+        }
+    });
+},{threshold:0.2});
+
+document.querySelectorAll(".rbook-left, .rbook-right").forEach(el=>{
+    rbookObserver.observe(el);
+});
+
+document.getElementById("rbookForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const btn = document.querySelector(".rbook-btn");
+
+    btn.innerHTML = "Reservation Granted ✓";
+    btn.style.background = "#28a745";
+    btn.disabled = true;
+
+    setTimeout(()=>{
+        window.location.href = "404.html";
+    }, 2000);
+});
+</script>
+
+<section class="rphilo-section">
+
+    <div class="rphilo-container">
+
+        <!-- Images -->
+        <div class="rphilo-images">
+            <div class="rphilo-img-small rphilo-reveal-left">
+                <img src="./chicken grill.webp" alt="">
+            </div>
+
+            <div class="rphilo-img-large rphilo-reveal-up">
+                <img src="./chef.webp" alt="">
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="rphilo-content rphilo-reveal-right">
+            <span class="rphilo-subtitle">QUALITY & BALANCE</span>
+            <h2>OUR FOOD<br>PHILOSOPHY</h2>
+
+            <p>
+                Simple and balanced. Our chefs bring together authentic
+                flavors and premium ingredients to create a unique culinary
+                experience filled with taste, creativity, and passion.
+            </p>
+
+            <a href="404.html" class="rphilo-btn">LEARN MORE</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="rtest-section">
+
+    <div class="rtest-container">
+
+        <div class="rtest-slider rtest-reveal">
+            <!-- <span class="rtest-number">06</span> -->
+            <h2 class="rtest-title">What Our Guests Say</h2>
+
+            <div class="rtest-quote">❝</div>
+
+            <div class="rtest-slide active">
+                <p class="rtest-text">
+                    Every dish was beautifully presented and bursting with flavor.
+                    The chef’s special was unforgettable. One of the finest dining
+                    experiences we’ve ever had.
+                </p>
+
+                <div class="rtest-author">
+                    <img src="hero10.webp" alt="">
+                    <div>
+                        <h4>John Michael</h4>
+                        <p>Food Critic</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rtest-slide">
+                <p class="rtest-text">
+                    The ambiance, service, and food were simply exceptional.
+                    Every moment felt luxurious and welcoming.
+                </p>
+
+                <div class="rtest-author">
+                    <img src="hero9.webp" alt="">
+                    <div>
+                        <h4>Sarah Williams</h4>
+                        <p>Travel Blogger</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rtest-slide">
+                <p class="rtest-text">
+                    Perfect place for celebrations. Our anniversary dinner was magical,
+                    and the desserts were outstanding.
+                </p>
+
+                <div class="rtest-author">
+                    <img src="chef.webp" alt="">
+                    <div>
+                        <h4>David & Emma</h4>
+                        <p>Regular Guests</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rtest-nav">
+                <button onclick="rtestChange(-1)">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button onclick="rtestChange(1)">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="rtest-image rtest-reveal">
+            <img src="hero11.webp" alt="">
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .rtest-section{
+    width:100%;
+    padding:90px 6%;
+    background:#fff8f3;
+    overflow:hidden;
+}
+
+.rtest-container{
+    display:flex;
+    align-items:center;
+    gap:50px;
+}
+
+.rtest-slider,
+.rtest-image{
+    flex:1;
+}
+
+.rtest-number{
+    color:#d96a3c;
+    font-weight:700;
+    font-size:18px;
+}
+
+.rtest-title{
+    font-size:58px;
+    margin:15px 0 30px;
+    font-family:serif;
+}
+
+.rtest-quote{
+    font-size:80px;
+    color:#d96a3c;
+    line-height:1;
+}
+
+.rtest-slide{
+    display:none;
+    animation:rtestFade .6s ease;
+}
+
+.rtest-slide.active{
+    display:block;
+}
+
+@keyframes rtestFade{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.rtest-text{
+    font-size:20px;
+    line-height:1.9;
+    color:#666;
+    margin:20px 0 35px;
+}
+
+.rtest-author{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.rtest-author img{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.rtest-author h4{
+    font-size:20px;
+}
+
+.rtest-author p{
+    color:#777;
+}
+
+.rtest-nav{
+    margin-top:40px;
+    display:flex;
+    gap:15px;
+}
+
+.rtest-nav button{
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:#d96a3c;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+    transition:.4s;
+}
+
+.rtest-nav button:hover{
+    transform:translateY(-4px);
+}
+
+.rtest-image img{
+    width:100%;
+    height:650px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+/* Reveal Animation */
+.rtest-reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.rtest-show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rtest-container{
+        flex-direction:column;
+    }
+
+    .rtest-title{
+        font-size:42px;
+    }
+
+    .rtest-image img{
+        height:500px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rtest-section{
+        padding:60px 20px;
+    }
+
+    .rtest-title{
+        font-size:30px;
+    }
+
+    .rtest-text{
+        font-size:16px;
+    }
+
+    .rtest-author img{
+        width:60px;
+        height:60px;
+    }
+
+    .rtest-image img{
+        height:320px;
+    }
+}
+</style>
+
+<script>
+    let rtestIndex = 0;
+const rtestSlides = document.querySelectorAll(".rtest-slide");
+
+function rtestShow(index){
+    rtestSlides.forEach(slide=>{
+        slide.classList.remove("active");
+    });
+
+    if(index >= rtestSlides.length) rtestIndex = 0;
+    if(index < 0) rtestIndex = rtestSlides.length - 1;
+
+    rtestSlides[rtestIndex].classList.add("active");
+}
+
+function rtestChange(step){
+    rtestIndex += step;
+    rtestShow(rtestIndex);
+}
+
+setInterval(()=>{
+    rtestIndex++;
+    rtestShow(rtestIndex);
+},5000);
+
+const rtestObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("rtest-show");
+        }
+    });
+},{threshold:0.2});
+
+document.querySelectorAll(".rtest-reveal").forEach(el=>{
+    rtestObserver.observe(el);
+});
+</script>
+
+
+
+<style>
+    .rphilo-section{
+    width:100%;
+    padding:100px 6%;
+    background:#f7f4f1;
+    overflow:hidden;
+}
+
+.rphilo-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+/* LEFT IMAGE AREA */
+.rphilo-images{
+    position:relative;
+    width:50%;
+    min-height:650px;
+}
+
+.rphilo-img-small{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:42%;
+    z-index:1;
+}
+
+.rphilo-img-large{
+    position:absolute;
+    left:20%;
+    top:0;
+    width:70%;
+    z-index:2;
+}
+
+.rphilo-images img{
+    width:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .6s ease;
+}
+
+.rphilo-images img:hover{
+    transform:scale(1.05);
+}
+
+/* RIGHT CONTENT */
+.rphilo-content{
+    width:45%;
+}
+
+.rphilo-subtitle{
+    color:#d96a3c;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:2px;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.rphilo-content h2{
+    font-size:68px;
+    line-height:1.05;
+    margin-bottom:30px;
+    font-family:serif;
+}
+
+.rphilo-content p{
+    color:#666;
+    line-height:1.9;
+    font-size:20px;
+    margin-bottom:35px;
+}
+
+.rphilo-btn{
+    display:inline-block;
+    padding:16px 34px;
+    background:#d96a3c;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    transition:.4s;
+}
+
+.rphilo-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* ANIMATION */
+.rphilo-reveal-left,
+.rphilo-reveal-up,
+.rphilo-reveal-right{
+    opacity:0;
+}
+
+.rphilo-reveal-left{
+    transform:translateX(-80px);
+    transition:1s ease;
+}
+
+.rphilo-reveal-up{
+    transform:translateY(80px);
+    transition:1.2s ease;
+}
+
+.rphilo-reveal-right{
+    transform:translateX(80px);
+    transition:1.4s ease;
+}
+
+.rphilo-show{
+    opacity:1;
+    transform:translate(0,0);
+}
+
+/* TABLET */
+@media (max-width:992px){
+    .rphilo-container{
+        flex-direction:column;
+    }
+
+    .rphilo-images,
+    .rphilo-content{
+        width:100%;
+    }
+
+    .rphilo-images{
+        min-height:500px;
+    }
+
+    .rphilo-content h2{
+        font-size:48px;
+    }
+}
+
+/* MOBILE */
+@media (max-width:768px){
+    .rphilo-section{
+        padding:60px 20px;
+    }
+
+    .rphilo-images{
+        min-height:auto;
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+        position:static;
+    }
+
+    .rphilo-img-small,
+    .rphilo-img-large{
+        position:static;
+        width:100%;
+    }
+
+    .rphilo-content{
+        text-align:center;
+    }
+
+    .rphilo-content h2{
+        font-size:34px;
+    }
+
+    .rphilo-content p{
+        font-size:16px;
+    }
+}
+</style>
+
+<script>
+    const rphiloObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("rphilo-show");
+        }
+    });
+},{threshold:0.25});
+
+document.querySelectorAll(
+    ".rphilo-reveal-left, .rphilo-reveal-up, .rphilo-reveal-right"
+).forEach(el=>{
+    rphiloObserver.observe(el);
+});
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="rstfooter-section">
+
+    <div class="rstfooter-container">
+
+        <!-- Column 1 -->
+        <div class="rstfooter-col">
+            <a href="index.html" class="rstfooter-logo">
+                <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+            <p>
+                Experience delicious food, premium ambiance and unforgettable
+                dining moments with our chef-crafted menu.
+            </p>
+
+            <div class="rstfooter-social">
+                <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="./404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                <a href="./404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="rstfooter-col">
+            <h3>Working Hours</h3>
+
+            <ul class="rstfooter-hours">
+                <li><span>Mon - Fri</span><span>09:00 - 22:00</span></li>
+                <li><span>Saturday</span><span>11:00 - 00:00</span></li>
+                <li><span>Sunday</span><span>11:00 - 23:00</span></li>
+                <li><span>Happy Hour</span><span>17:00 - 21:00</span></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="rstfooter-col">
+            <h3>Contact Us</h3>
+
+            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> booking@restaurant.com</p>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="rstfooter-col">
+            <h3>Newsletter</h3>
+            <p>Receive latest updates from us.</p>
+
+            <form id="rstfooterForm">
+                <input type="email" id="rstfooterEmail" placeholder="Enter Email">
+                <button type="submit">Subscribe</button>
+            </form>
+
+            <small id="rstfooterMsg"></small>
+        </div>
+
+    </div>
+
+    <div class="rstfooter-bottom">
+        © 2026 Stackly Restaurant. All Rights Reserved.
+    </div>
+
+</footer>
+
+<style>
+    .rstfooter-section{
+    background:#111;
+    color:white;
+    padding:70px 6% 20px;
+}
+
+.rstfooter-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+}
+
+.rstfooter-col h3{
+    margin-bottom:25px;
+    color:#d96a3c;
+}
+
+.rstfooter-col p{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.rstfooter-logo img{
+    width:160px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.rstfooter-social{
+    display:flex;
+    gap:15px;
+}
+
+.rstfooter-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.rstfooter-social a:hover{
+    background:#d96a3c;
+}
+
+.rstfooter-hours{
+    list-style:none;
+    padding:0;
+}
+
+.rstfooter-hours li{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    color:#bbb;
+}
+
+#rstfooterForm{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#rstfooterForm input{
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+#rstfooterForm button{
+    padding:14px;
+    border:none;
+    background:#d96a3c;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+#rstfooterMsg{
+    display:block;
+    margin-top:10px;
+    color:#ff7b7b;
+}
+
+.rstfooter-bottom{
+    text-align:center;
+    border-top:1px solid #333;
+    margin-top:50px;
+    padding-top:20px;
+    color:#999;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rstfooter-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rstfooter-container{
+        grid-template-columns:1fr;
+    }
+
+    .rstfooter-hours li{
+        flex-direction:column;
+        gap:5px;
+    }
+}
+</style>
+
+<script>
+    document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("rstfooterEmail").value.trim();
+    const msg = document.getElementById("rstfooterMsg");
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(emailPattern.test(email)){
+        msg.style.color = "#4CAF50";
+        msg.innerText = "Email verified ✓";
+
+        setTimeout(()=>{
+            window.location.href = "404.html";
+        },1500);
+    } else {
+        msg.style.color = "#ff7b7b";
+        msg.innerText = "Fill details correctly";
+    }
+});
+</script>
+</body>
+</html>

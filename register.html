@@ -1,0 +1,321 @@
+<body>
+
+    <div class="gh-wrapper">
+    
+    <a href="index.html" class="gh-logo">
+        <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+
+    </a>
+    
+    <div class="gh-card">
+    
+        <div class="gh-icon">
+            <i class="fa-solid fa-utensils"></i>
+        </div>
+    
+        <h2 class="gh-title">Create Restaurant Account</h2>
+        <p class="gh-sub">Join Grand House premium dining platform</p>
+    
+        <form id="ghRegForm">
+    
+            <div class="gh-grid">
+    
+                <div class="gh-group">
+                    <label>Full Name</label>
+                    <input type="text" id="fullname" placeholder="John Doe">
+                </div>
+    
+                <div class="gh-group">
+                    <label>Role</label>
+                    <select id="role">
+                        <option value="customer">Customer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+    
+            </div>
+    
+            <div class="gh-group">
+                <label>Email</label>
+                <input type="text" id="email" placeholder="Enter Email">
+            </div>
+    
+            <div class="gh-grid">
+    
+                <div class="gh-group">
+                    <label>Password</label>
+                    <div class="gh-pass-wrap">
+                        <input type="password" id="password">
+                        <span onclick="togglePass('password')">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+    
+                <div class="gh-group">
+                    <label>Confirm Password</label>
+                    <div class="gh-pass-wrap">
+                        <input type="password" id="confirm">
+                        <span onclick="togglePass('confirm')">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <p id="errorMsg" class="gh-error">Fill details correctly</p>
+    
+            <button class="gh-btn">Register</button>
+    
+            <div class="gh-link">
+                Already have account?
+                <a href="login.html">Login</a>
+            </div>
+    
+        </form>
+    
+    </div>
+    </div>
+
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:
+        linear-gradient(rgba(20,20,20,0.75), rgba(20,20,20,0.75)),
+        url('./dubai.webp') center/cover no-repeat;
+}
+
+.gh-wrapper{
+    width:100%;
+    max-width:900px;
+}
+
+.gh-logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.gh-logo img{
+    height:80px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.gh-logo img:hover{
+    transform:scale(1.05);
+}
+
+.gh-card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:22px;
+    padding:40px;
+    box-shadow:0 15px 50px rgba(0,0,0,0.45);
+}
+
+.gh-icon{
+    width:75px;
+    height:75px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    color:#fff;
+    background:linear-gradient(135deg,#ff7a00,#ffb347);
+}
+
+.gh-title{
+    text-align:center;
+    color:#fff;
+    font-size:30px;
+    margin-top:20px;
+}
+
+.gh-sub{
+    text-align:center;
+    color:#ddd;
+    margin:10px 0 30px;
+}
+
+.gh-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.gh-group{
+    margin-bottom:20px;
+}
+
+.gh-group label{
+    display:block;
+    color:#fff;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.gh-group input,
+.gh-group select{
+    width:100%;
+    height:48px;
+    padding:0 15px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.12);
+    color:#fff;
+}
+
+.gh-group select option{
+    background:#222;
+}
+
+.gh-pass-wrap{
+    position:relative;
+}
+
+.gh-pass-wrap span{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#fff;
+}
+
+.gh-error{
+    color:#ff5c5c;
+    display:none;
+    margin-bottom:15px;
+    font-size:14px;
+}
+
+.gh-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#ff7a00,#ffb347);
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.gh-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(255,122,0,0.35);
+}
+
+.gh-link{
+    text-align:center;
+    margin-top:20px;
+    color:#ddd;
+}
+
+.gh-link a{
+    color:#ffb347;
+    text-decoration:none;
+}
+
+/* Tablet */
+@media(max-width:768px){
+    .gh-card{
+        padding:30px 24px;
+    }
+
+    .gh-grid{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+}
+
+/* Mobile */
+@media(max-width:480px){
+    .gh-card{
+        padding:22px 16px;
+    }
+
+    .gh-title{
+        font-size:22px;
+    }
+
+    .gh-logo img{
+        height:60px;
+    }
+}
+    </style>
+
+<script>
+    function togglePass(id){
+        const input = document.getElementById(id);
+        input.type = input.type === "password" ? "text" : "password";
+    }
+    
+    document.getElementById("ghRegForm").addEventListener("submit", function(e){
+        e.preventDefault();
+    
+        const fullname = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirm = document.getElementById("confirm").value.trim();
+        const role = document.getElementById("role").value;
+        const errorMsg = document.getElementById("errorMsg");
+    
+        errorMsg.style.display = "none";
+    
+        // simple email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        if(
+            fullname === "" ||
+            email === "" ||
+            password === "" ||
+            confirm === ""
+        ){
+            errorMsg.innerText = "Fill details correctly";
+            errorMsg.style.display = "block";
+            return;
+        }
+    
+        if(!emailPattern.test(email)){
+            errorMsg.innerText = "Fill details correctly";
+            errorMsg.style.display = "block";
+            return;
+        }
+    
+        if(password !== confirm){
+            errorMsg.innerText = "Passwords do not match";
+            errorMsg.style.display = "block";
+            return;
+        }
+    
+        localStorage.setItem("registeredName", fullname);
+        localStorage.setItem("registeredEmail", email);
+        localStorage.setItem("registeredRole", role);
+    
+        alert("Registered Successfully!");
+    
+        setTimeout(()=>{
+            window.location.href = "404.html";
+        },800);
+    });
+    </script>
