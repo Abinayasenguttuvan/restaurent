@@ -22,7 +22,7 @@ href="https://cdn.jsdelivr.net/npm/chart.js">
 <div class="sidebar" id="sidebar">
 
     <a href="./index.html" class="logo-box">
-        <img src="./white.webp" alt="Stackly Logo">
+        <!-- <img src="./white.webp" alt="Stackly Logo"> -->
         <span>STACKLY</span>
     </a>
 
@@ -541,9 +541,63 @@ display:none;
 font-size:18px;
 }
 }
+/* LOGOUT POPUP */
+.logout-popup{
+position:fixed;
+top:-120px;
+left:50%;
+transform:translateX(-50%);
+background:linear-gradient(135deg,#ff7b00,#ffb347);
+color:#fff;
+padding:18px 34px;
+border-radius:60px;
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:600;
+font-size:17px;
+box-shadow:0 14px 35px rgba(255,123,0,.45);
+z-index:99999;
+opacity:0;
+transition:all .55s cubic-bezier(.175,.885,.32,1.2);
+}
+
+.logout-popup i{
+font-size:22px;
+}
+
+.logout-popup.show{
+top:30px;
+opacity:1;
+animation:bouncePopup .7s ease;
+}
+
+@keyframes bouncePopup{
+0%{
+transform:translateX(-50%) scale(.7);
+}
+60%{
+transform:translateX(-50%) scale(1.08);
+}
+100%{
+transform:translateX(-50%) scale(1);
+}
+}
+
+/* Mobile */
+@media(max-width:600px){
+.logout-popup{
+font-size:14px;
+padding:14px 20px;
+width:90%;
+justify-content:center;
+}
+}
 </style>
 
 <script>
+
+    
     /* =========================
    LOAD ADMIN DETAILS
 ========================= */
@@ -582,12 +636,35 @@ overlay.addEventListener("click", function () {
 ========================= */
 
 function logout() {
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("loggedUser");
 
-    alert("Logged out successfully");
-    window.location.href = "login.html";
+// remove storage
+localStorage.removeItem("userName");
+localStorage.removeItem("userEmail");
+localStorage.removeItem("loggedUser");
+sessionStorage.removeItem("loggedUser");
+
+// Create popup
+const popup = document.createElement("div");
+popup.className = "logout-popup";
+popup.innerHTML = `
+    <i class="fas fa-check-circle"></i>
+    Logged out successfully
+`;
+
+document.body.appendChild(popup);
+
+setTimeout(() => {
+    popup.classList.add("show");
+}, 100);
+
+setTimeout(() => {
+    popup.classList.remove("show");
+
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 500);
+
+}, 1800);
 }
 
 

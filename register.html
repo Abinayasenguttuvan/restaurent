@@ -1,86 +1,14 @@
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
 
-    <div class="gh-wrapper">
-    
-    <a href="index.html" class="gh-logo">
-        <img src="./white.webp" alt="Stackly Logo"
-style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    </a>
-    
-    <div class="gh-card">
-    
-        <div class="gh-icon">
-            <i class="fa-solid fa-utensils"></i>
-        </div>
-    
-        <h2 class="gh-title">Create Restaurant Account</h2>
-        <p class="gh-sub">Join Grand House premium dining platform</p>
-    
-        <form id="ghRegForm">
-    
-            <div class="gh-grid">
-    
-                <div class="gh-group">
-                    <label>Full Name</label>
-                    <input type="text" id="fullname" placeholder="John Doe">
-                </div>
-    
-                <div class="gh-group">
-                    <label>Role</label>
-                    <select id="role">
-                        <option value="customer">Customer</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </div>
-    
-            </div>
-    
-            <div class="gh-group">
-                <label>Email</label>
-                <input type="text" id="email" placeholder="Enter Email">
-            </div>
-    
-            <div class="gh-grid">
-    
-                <div class="gh-group">
-                    <label>Password</label>
-                    <div class="gh-pass-wrap">
-                        <input type="password" id="password">
-                        <span onclick="togglePass('password')">
-                            <i class="fa fa-eye"></i>
-                        </span>
-                    </div>
-                </div>
-    
-                <div class="gh-group">
-                    <label>Confirm Password</label>
-                    <div class="gh-pass-wrap">
-                        <input type="password" id="confirm">
-                        <span onclick="togglePass('confirm')">
-                            <i class="fa fa-eye"></i>
-                        </span>
-                    </div>
-                </div>
-    
-            </div>
-    
-            <p id="errorMsg" class="gh-error">Fill details correctly</p>
-    
-            <button class="gh-btn">Register</button>
-    
-            <div class="gh-link">
-                Already have account?
-                <a href="login.html">Login</a>
-            </div>
-    
-        </form>
-    
-    </div>
-    </div>
-
-    <style>
-        *{
+<style>
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -103,22 +31,6 @@ body{
     max-width:900px;
 }
 
-.gh-logo{
-    display:flex;
-    justify-content:center;
-    margin-bottom:20px;
-}
-
-.gh-logo img{
-    height:80px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.gh-logo img:hover{
-    transform:scale(1.05);
-}
-
 .gh-card{
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(16px);
@@ -126,6 +38,22 @@ body{
     border-radius:22px;
     padding:40px;
     box-shadow:0 15px 50px rgba(0,0,0,0.45);
+}
+
+.gh-logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.gh-logo img{
+    height:70px;
+    transition:.3s;
+    filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);
+}
+
+.gh-logo img:hover{
+    transform:scale(1.05);
 }
 
 .gh-icon{
@@ -168,7 +96,6 @@ body{
     display:block;
     color:#fff;
     margin-bottom:8px;
-    font-size:14px;
 }
 
 .gh-group input,
@@ -191,20 +118,23 @@ body{
     position:relative;
 }
 
+.gh-pass-wrap input{
+    padding-right:50px;
+}
+
 .gh-pass-wrap span{
     position:absolute;
     right:15px;
     top:50%;
     transform:translateY(-50%);
     cursor:pointer;
-    color:#fff;
+    color:white;
 }
 
 .gh-error{
     color:#ff5c5c;
     display:none;
     margin-bottom:15px;
-    font-size:14px;
 }
 
 .gh-btn{
@@ -217,7 +147,6 @@ body{
     font-size:17px;
     font-weight:600;
     cursor:pointer;
-    transition:.3s;
 }
 
 .gh-btn:hover{
@@ -236,6 +165,47 @@ body{
     text-decoration:none;
 }
 
+/* POPUP */
+.gh-popup{
+    position:fixed;
+    top:-300px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:420px;
+    padding:28px;
+    border-radius:22px;
+    text-align:center;
+    z-index:9999;
+    background:linear-gradient(135deg,#ff7a00,#ffb347);
+    box-shadow:0 18px 50px rgba(255,122,0,0.45);
+    color:white;
+    transition:.7s;
+}
+
+.gh-popup.show{
+    top:30px;
+    animation:bounce .8s ease;
+}
+
+@keyframes bounce{
+    0%{
+        opacity:0;
+        transform:translateX(-50%) translateY(-100px);
+    }
+    70%{
+        transform:translateX(-50%) translateY(10px);
+    }
+    100%{
+        transform:translateX(-50%) translateY(0);
+    }
+}
+
+.gh-popup-icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
 /* Tablet */
 @media(max-width:768px){
     .gh-card{
@@ -250,8 +220,12 @@ body{
 
 /* Mobile */
 @media(max-width:480px){
+    body{
+        padding:10px;
+    }
+
     .gh-card{
-        padding:22px 16px;
+        padding:24px 16px;
     }
 
     .gh-title{
@@ -259,63 +233,161 @@ body{
     }
 
     .gh-logo img{
-        height:60px;
+        height:55px;
+    }
+
+    .gh-group input,
+    .gh-group select{
+        height:46px;
+    }
+
+    .gh-popup{
+        width:95%;
+        padding:22px 16px;
     }
 }
-    </style>
+</style>
+</head>
+<body>
+
+<div class="gh-wrapper">
+<div class="gh-card">
+
+<a href="index.html" class="gh-logo">
+<img src="./white.webp" alt="Logo">
+</a>
+
+<div class="gh-icon">
+    <i class="fa-solid fa-utensils"></i>
+</div>
+
+<h2 class="gh-title">Create Restaurant Account</h2><br>
+<!-- <p class="gh-sub">Join Grand House premium dining platform</p> -->
+
+<form id="ghRegForm">
+
+<div class="gh-grid">
+<div class="gh-group">
+<label>Full Name</label>
+<input type="text" id="fullname" placeholder="John Doe">
+</div>
+
+<div class="gh-group">
+<label>Role</label>
+<select id="role">
+<option value="customer">Customer</option>
+<option value="admin">Admin</option>
+</select>
+</div>
+</div>
+
+<div class="gh-group">
+<label>Email</label>
+<input type="text" id="email" placeholder="Enter Email">
+</div>
+
+<div class="gh-grid">
+<div class="gh-group">
+<label>Password</label>
+<div class="gh-pass-wrap">
+<input type="password" id="password">
+<span onclick="togglePass('password',this)">
+<i class="fa fa-eye"></i>
+</span>
+</div>
+</div>
+
+<div class="gh-group">
+<label>Confirm Password</label>
+<div class="gh-pass-wrap">
+<input type="password" id="confirm">
+<span onclick="togglePass('confirm',this)">
+<i class="fa fa-eye"></i>
+</span>
+</div>
+</div>
+</div>
+
+<p id="errorMsg" class="gh-error">Fill details correctly</p>
+
+<button class="gh-btn">Register</button>
+
+<div class="gh-link">
+Already have account?
+<a href="login.html">Login</a>
+</div>
+
+</form>
+</div>
+</div>
+
+<!-- Popup -->
+<div id="successPopup" class="gh-popup">
+<div class="gh-popup-icon">
+<i class="fa-solid fa-circle-check"></i>
+</div>
+<h2>Registered Successfully!</h2>
+<p>Welcome to Grand House</p>
+</div>
 
 <script>
-    function togglePass(id){
-        const input = document.getElementById(id);
-        input.type = input.type === "password" ? "text" : "password";
+function togglePass(id, el){
+    const input=document.getElementById(id);
+    const icon=el.querySelector("i");
+
+    if(input.type==="password"){
+        input.type="text";
+        icon.classList.replace("fa-eye","fa-eye-slash");
+    }else{
+        input.type="password";
+        icon.classList.replace("fa-eye-slash","fa-eye");
     }
-    
-    document.getElementById("ghRegForm").addEventListener("submit", function(e){
-        e.preventDefault();
-    
-        const fullname = document.getElementById("fullname").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const confirm = document.getElementById("confirm").value.trim();
-        const role = document.getElementById("role").value;
-        const errorMsg = document.getElementById("errorMsg");
-    
-        errorMsg.style.display = "none";
-    
-        // simple email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-        if(
-            fullname === "" ||
-            email === "" ||
-            password === "" ||
-            confirm === ""
-        ){
-            errorMsg.innerText = "Fill details correctly";
-            errorMsg.style.display = "block";
-            return;
-        }
-    
-        if(!emailPattern.test(email)){
-            errorMsg.innerText = "Fill details correctly";
-            errorMsg.style.display = "block";
-            return;
-        }
-    
-        if(password !== confirm){
-            errorMsg.innerText = "Passwords do not match";
-            errorMsg.style.display = "block";
-            return;
-        }
-    
-        localStorage.setItem("registeredName", fullname);
-        localStorage.setItem("registeredEmail", email);
-        localStorage.setItem("registeredRole", role);
-    
-        alert("Registered Successfully!");
-    
-        setTimeout(()=>{
-            window.location.href = "404.html";
-        },800);
-    });
-    </script>
+}
+
+document.getElementById("ghRegForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const fullname=document.getElementById("fullname").value.trim();
+    const email=document.getElementById("email").value.trim();
+    const password=document.getElementById("password").value.trim();
+    const confirm=document.getElementById("confirm").value.trim();
+    const role=document.getElementById("role").value;
+    const errorMsg=document.getElementById("errorMsg");
+
+    errorMsg.style.display="none";
+
+    const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(fullname==="" || email==="" || password==="" || confirm===""){
+        errorMsg.innerText="Fill details correctly";
+        errorMsg.style.display="block";
+        return;
+    }
+
+    if(!emailPattern.test(email)){
+        errorMsg.innerText="Invalid Email";
+        errorMsg.style.display="block";
+        return;
+    }
+
+    if(password!==confirm){
+        errorMsg.innerText="Passwords do not match";
+        errorMsg.style.display="block";
+        return;
+    }
+
+    localStorage.setItem("registeredName", fullname);
+    localStorage.setItem("registeredEmail", email);
+    localStorage.setItem("registeredRole", role);
+
+    const popup=document.getElementById("successPopup");
+    popup.classList.add("show");
+
+    setTimeout(()=>{
+        window.location.href="404.html";
+    },2500);
+});
+</script>
+
+</body>
+</html>

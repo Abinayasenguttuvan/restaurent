@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restaurant </title>
+<title>Stackly Restaurant </title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -37,25 +37,25 @@ body{
 
 .stkhd-container{
     width:100%;
-    max-width:1400px;
-    margin:auto;
-    padding:18px 6%;
+    max-width:100%;
+    margin:0;
+    padding:15px 20px 15px 0;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-/* LOGO */
 .stkhd-logo{
-    text-decoration:none;
     display:flex;
     align-items:center;
+    text-decoration:none;
+    margin-left:20px;
 }
 
 .stkhd-logo img{
-    height:55px;
+    height:60px;
+    display:block;
 }
-
 .stkhd-logo-text{
     font-size:32px;
     font-weight:800;
@@ -95,6 +95,7 @@ body{
 
 .stkhd-btn:hover{
     transform:translateY(-3px);
+    
 }
 
 /* HAMBURGER */
@@ -172,7 +173,7 @@ body{
             <img src="./white.webp" alt="Stackly Logo"
 style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
 
-        </a>
+    
 
         <!-- HAMBURGER -->
         <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
@@ -195,15 +196,6 @@ style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) 
         </nav>
 
     </div>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-AOS.init({
-    duration:1200,
-    once:true
-});
-</script>
 </header>
 
 <script>
@@ -215,6 +207,9 @@ function stkhdCloseMenu(){
     document.getElementById("stkhdNav").classList.remove("active");
 }
 </script>
+
+
+
 
 
 

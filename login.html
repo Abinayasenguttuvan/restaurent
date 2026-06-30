@@ -1,66 +1,94 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <div class="container">
 
-    <!-- Left side -->
+    <!-- LEFT SIDE -->
     <div class="login-left">
-  
-      <a href="index.html" class="restaurant-logo">
-        <img src="./white.webp" alt="Stackly Logo"
-style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);"></a>
 
-      </a>
-  
-      <h2>Welcome to Grand House</h2>
-      <p class="welcome-text">
-        Experience luxury dining, world-class hospitality and unforgettable flavors.
-        Login to manage reservations, bookings and customer services.
-      </p>
-  
-      <div class="form-group">
-        <label for="accountType">Role</label>
-        <select id="accountType">
-          <option value="customer">Customer</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email">
-      </div>
-  
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password">
-      </div>
-  
-      <div class="remember-forgot">
-        <label><input type="checkbox" id="remember"> Remember me</label>
-        <a href="./404.html">Forgot Password?</a>
-      </div>
-  
-      <button class="btn" onclick="login()">Login</button>
-  
-      <p id="errorMsg" class="error-msg">Fill details correctly</p>
-  
-      <div class="signup">
-        Don't have an account?
-        <a href="./register.html">Register now</a>
-      </div>
+        <a href="index.html" class="restaurant-logo">
+            <img src="./white.webp" alt="Stackly Logo"
+            style="height:60px; filter: brightness(0) saturate(100%) invert(55%) sepia(77%) saturate(1752%) hue-rotate(340deg) brightness(99%) contrast(91%);">
+        </a>
+
+        <h2>Welcome to Grand House</h2>
+
+        <!-- <p class="welcome-text">
+            Experience luxury dining, world-class hospitality and unforgettable flavors.
+            Login to manage reservations, bookings and customer services.
+        </p> -->
+
+        <div class="form-group">
+            <label for="accountType">Role</label>
+            <select id="accountType">
+                <option value="customer">Customer</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+
+        <!-- PASSWORD WITH EYE ICON -->
+        <div class="form-group">
+            <label for="password">Password</label>
+
+            <div class="password-wrapper">
+                <input type="password" id="password" placeholder="Enter your password">
+                <span class="eye-btn" onclick="togglePassword()">
+                    <i id="eyeIcon" class="fa fa-eye"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="remember-forgot">
+            <label><input type="checkbox" id="remember"> Remember me</label>
+            <a href="./404.html">Forgot Password?</a>
+        </div>
+
+        <button class="btn" onclick="login()">Login</button>
+
+        <!-- SOCIAL LOGIN -->
+        <div class="social-divider">
+            <span>Or continue with</span>
+        </div>
+
+        <div class="social-login">
+            <a href="./404.html" class="social-btn google">
+                <i class="fab fa-google"></i>
+            </a>
+
+            <a href="./404.html" class="social-btn facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="./404.html" class="social-btn twitter">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+
+        <p id="errorMsg" class="error-msg">Fill details correctly</p>
+
+        <div class="signup">
+            Don't have an account?
+            <a href="./register.html">Register now</a>
+        </div>
     </div>
-  
-    <!-- Right side -->
+
+    <!-- RIGHT SIDE -->
     <div class="login-right">
-      <img src="./hero9.webp" alt="Dish">
-      <div class="reviews">
-        <p>"Best dining experience ever!"</p>
-        <p>"Amazing ambience and delicious dishes."</p>
-        <p>"Luxury dining at its finest."</p>
-      </div>
-    </div>
-  
-  </div>
+        <img src="./hero9.webp" alt="Dish">
 
-  <style>
+        <div class="reviews">
+            <p>"Best dining experience ever!"</p>
+            <p>"Amazing ambience and delicious dishes."</p>
+            <p>"Luxury dining at its finest."</p>
+        </div>
+    </div>
+
+</div>
+
+<style>
     /* RESET */
 *{
     margin:0;
@@ -80,6 +108,7 @@ body{
     background:url('./switch.webp') no-repeat center center/cover;
     position:relative;
     overflow:auto;
+    padding:20px;
 }
 
 /* DARK OVERLAY */
@@ -91,13 +120,14 @@ body::before{
     z-index:0;
 }
 
-/* MAIN CONTAINER */
+/* CONTAINER */
 .container{
     position:relative;
     z-index:1;
     display:flex;
-    width:90%;
-    max-width:1100px;
+    width:85%;
+    max-width:950px;
+    min-height:580px;
     border-radius:24px;
     overflow:hidden;
     backdrop-filter:blur(18px);
@@ -116,51 +146,49 @@ body::before{
     }
 }
 
-/* LEFT SIDE */
+/* LEFT */
 .login-left{
     flex:1;
-    padding:50px 40px;
+    padding:35px 30px;
     background:rgba(255,255,255,0.08);
     color:white;
 }
 
 .restaurant-logo{
     display:inline-block;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .restaurant-logo img{
-    width:120px;
-    transition:0.3s;
+    width:110px;
+    transition:.3s;
 }
 
 .restaurant-logo:hover img{
-    transform:scale(1.06);
+    transform:scale(1.05);
 }
 
 .login-left h2{
-    font-size:34px;
-    margin-bottom:15px;
+    font-size:30px;
+    margin-bottom:12px;
     color:#ff9d2f;
 }
 
 .welcome-text{
     color:#ddd;
-    line-height:1.8;
-    margin-bottom:28px;
+    line-height:1.6;
+    margin-bottom:22px;
 }
 
-/* FORM */
 .form-group{
     display:flex;
     flex-direction:column;
-    margin-bottom:18px;
+    margin-bottom:16px;
 }
 
 .form-group label{
-    margin-bottom:8px;
+    margin-bottom:6px;
     color:#f0f0f0;
-    font-size:14px;
 }
 
 .form-group input,
@@ -178,21 +206,39 @@ body::before{
     color:#ccc;
 }
 
+select option{
+    color:black;
+}
+
 .form-group input:focus,
 .form-group select:focus{
     border:1px solid #ff9d2f;
 }
 
-/* SELECT */
-select option{
-    color:black;
+/* PASSWORD */
+.password-wrapper{
+    position:relative;
+}
+
+.password-wrapper input{
+    width:100%;
+    padding-right:48px;
+}
+
+.eye-btn{
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#ff9d2f;
 }
 
 /* REMEMBER */
 .remember-forgot{
     display:flex;
     justify-content:space-between;
-    margin-bottom:20px;
+    margin-bottom:18px;
     font-size:13px;
 }
 
@@ -220,18 +266,49 @@ select option{
     box-shadow:0 0 25px rgba(255,140,0,0.5);
 }
 
-/* ERROR */
+/* SOCIAL */
+.social-divider{
+    text-align:center;
+    margin:24px 0 18px;
+    color:#ddd;
+    position:relative;
+}
+
+.social-login{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.social-btn{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    font-size:20px;
+    background:linear-gradient(135deg,#ff7b00,#ffb347);
+    transition:.3s;
+}
+
+.social-btn:hover{
+    transform:translateY(-4px) scale(1.08);
+    box-shadow:0 0 20px rgba(255,140,0,.4);
+}
+
 .error-msg{
     display:none;
     color:#ff7070;
     margin-top:14px;
     text-align:center;
-    font-size:14px;
 }
 
-/* SIGNUP */
 .signup{
-    margin-top:20px;
+    margin-top:18px;
     text-align:center;
     color:white;
 }
@@ -242,7 +319,7 @@ select option{
     font-weight:600;
 }
 
-/* RIGHT SIDE */
+/* RIGHT */
 .login-right{
     flex:1;
     display:flex;
@@ -250,15 +327,15 @@ select option{
     justify-content:center;
     align-items:center;
     background:rgba(0,0,0,0.25);
-    padding:40px 30px;
+    padding:30px 25px;
     text-align:center;
 }
 
 .login-right img{
-    width:300px;
+    width:260px;
     max-width:100%;
     border-radius:20px;
-    margin-bottom:30px;
+    margin-bottom:20px;
     animation:floatDish 3s infinite ease-in-out;
 }
 
@@ -269,17 +346,19 @@ select option{
 
 .reviews{
     color:#ddd;
-    line-height:1.8;
+    line-height:1.7;
 }
 
 .reviews p{
-    margin-bottom:14px;
+    margin-bottom:12px;
     font-style:italic;
 }
 
 /* TABLET */
 @media(max-width:992px){
     .container{
+        width:95%;
+        max-width:700px;
         flex-direction:column;
     }
 
@@ -290,80 +369,141 @@ select option{
 }
 
 /* MOBILE */
-@media(max-width:576px){
-    body{
-        padding:15px;
-    }
+/* MOBILE VIEW FIX */
+@media (max-width:576px){
 
-    .container{
-        width:100%;
-        border-radius:16px;
-    }
+body{
+    height:auto;
+    min-height:100%;
+}
 
-    .login-left{
-        padding:25px 18px;
-    }
+body{
+    display:block;
+    padding:10px;
+    overflow-x:hidden;
+}
 
-    .login-left h2{
-        font-size:24px;
-    }
+.container{
+    width:100%;
+    min-height:auto;
+    display:flex;
+    flex-direction:column;
+    border-radius:18px;
+    margin:20px auto;
+}
 
-    .welcome-text{
-        font-size:14px;
-    }
+.login-left{
+    padding:28px 18px;
+}
 
-    .form-group input,
-    .form-group select{
-        height:44px;
-        font-size:14px;
-    }
+.restaurant-logo{
+    display:flex;
+    justify-content:center;
+}
 
-    .remember-forgot{
-        flex-direction:column;
-        gap:10px;
-    }
+.restaurant-logo img{
+    width:100px;
+    height:auto !important;
+}
 
-    .btn{
-        padding:12px;
-        font-size:14px;
-    }
+.login-left h2{
+    font-size:24px;
+    text-align:center;
+    line-height:1.4;
+}
 
-    .login-right{
-        padding:24px 18px;
-    }
+.welcome-text{
+    font-size:14px;
+    text-align:center;
+    margin-bottom:18px;
+    line-height:1.7;
+}
 
-    .login-right img{
-        width:220px;
-    }
+.form-group{
+    margin-bottom:14px;
+}
 
-    .reviews{
-        font-size:14px;
-    }
+.form-group label{
+    font-size:13px;
+}
 
-    .restaurant-logo img{
-        width:90px;
+.form-group input,
+.form-group select{
+    height:48px;
+    font-size:14px;
+}
+
+.remember-forgot{
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-start;
+    font-size:13px;
+}
+
+.btn{
+    padding:14px;
+    font-size:16px;
+}
+
+.social-divider{
+    margin:18px 0 14px;
+    font-size:14px;
+}
+
+.social-login{
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.social-btn{
+    width:48px;
+    height:48px;
+    font-size:18px;
+}
+
+.signup{
+    font-size:14px;
+}
+
+/* RIGHT PANEL */
+.login-right{
+    padding:22px 18px;
+}
+
+.login-right img{
+    width:180px;
+    margin-bottom:14px;
+}
+
+.reviews{
+    font-size:13px;
+    line-height:1.6;
+}
+
+.reviews p{
+    margin-bottom:8px;
+}
+}
+    </style>
+
+    <script>
+        // PASSWORD EYE TOGGLE
+function togglePassword() {
+    const password = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (password.type === "password") {
+        password.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    } else {
+        password.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
     }
 }
-  </style>
 
-<script>
-    
-// window.onload = function () {
-//     const savedUser =
-//         localStorage.getItem("loggedUser") ||
-//         sessionStorage.getItem("loggedUser");
-
-//     if (savedUser) {
-//         const user = JSON.parse(savedUser);
-
-//         if (user.accountType === "admin") {
-//             window.location.href = "admin.html";
-//         } else {
-//             window.location.href = "customer.html";
-//         }
-//     }
-// };
-
+// LOGIN FUNCTION
 function login() {
     const accountType = document.getElementById("accountType").value;
     const email = document.getElementById("email").value.trim();
@@ -375,45 +515,96 @@ function login() {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    /* Validation */
+    // Validation
     if (email === "" || password === "") {
-        errorMsg.innerText = "Fill details correctly";
-        errorMsg.style.display = "block";
+        showError("Fill details correctly");
         return;
     }
 
     if (!emailPattern.test(email)) {
-        errorMsg.innerText = "Enter valid email";
-        errorMsg.style.display = "block";
+        showError("Enter valid email");
         return;
     }
 
-    /* Create user object */
     const user = {
         email: email,
         accountType: accountType
     };
 
-    /* Generate name from email */
     let userName = email.split("@")[0];
 
-    /* Save separate values for dashboard */
     localStorage.setItem("userEmail", email);
     localStorage.setItem("userRole", accountType);
     localStorage.setItem("userName", userName);
 
-    /* Save full user object */
     if (remember) {
         localStorage.setItem("loggedUser", JSON.stringify(user));
     } else {
         sessionStorage.setItem("loggedUser", JSON.stringify(user));
     }
 
-    /* Redirect */
-    if (accountType === "admin") {
-        window.location.href = "admin.html";
-    } else {
-        window.location.href = "customer.html";
+    // Small animated popup
+    showSuccess("Login Successful!");
+
+    setTimeout(() => {
+        if (accountType === "admin") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "customer.html";
+        }
+    }, 1200);
+}
+
+function showError(message) {
+    const errorMsg = document.getElementById("errorMsg");
+    errorMsg.innerText = message;
+    errorMsg.style.display = "block";
+    errorMsg.style.animation = "none";
+    setTimeout(() => {
+        errorMsg.style.animation = "fadeIn 0.4s ease";
+    }, 10);
+}
+
+function showSuccess(message) {
+    const popup = document.createElement("div");
+    popup.innerText = message;
+
+    popup.style.position = "fixed";
+    popup.style.top = "30px";
+    popup.style.left = "50%";
+    popup.style.transform = "translateX(-50%)";
+    popup.style.background = "linear-gradient(135deg,#ff7b00,#ffb347)";
+    popup.style.color = "white";
+    popup.style.padding = "16px 34px";
+    popup.style.borderRadius = "50px";
+    popup.style.fontWeight = "600";
+    popup.style.boxShadow = "0 10px 30px rgba(255,140,0,.4)";
+    popup.style.zIndex = "99999";
+    popup.style.animation = "popupAnim .5s ease";
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.remove();
+    }, 1000);
+}
+
+// Inject popup animation
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes popupAnim{
+    from{
+        opacity:0;
+        transform:translate(-50%,-40px);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
     }
 }
-</script>
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}`;
+document.head.appendChild(style);
+    </script>

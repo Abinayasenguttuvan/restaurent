@@ -92,6 +92,14 @@ body{
     max-width:650px;
 }
 
+/* Buttons Wrapper */
+.r404-btn-wrap{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
 .r404-btn{
     display:inline-block;
     text-decoration:none;
@@ -99,13 +107,26 @@ body{
     background:#ff7a39;
     color:white;
     font-weight:700;
+    border:none;
     border-radius:50px;
+    cursor:pointer;
     transition:.4s;
+    font-size:16px;
 }
 
 .r404-btn:hover{
     transform:translateY(-5px) scale(1.05);
     box-shadow:0 14px 35px rgba(255,122,57,.4);
+}
+
+/* Secondary Button */
+.r404-btn-secondary{
+    background:transparent;
+    border:2px solid #ff7a39;
+}
+
+.r404-btn-secondary:hover{
+    background:#ff7a39;
 }
 
 /* Responsive */
@@ -138,6 +159,8 @@ body{
 
     .r404-btn{
         padding:15px 28px;
+        width:100%;
+        max-width:260px;
     }
 
     .r404-food{
@@ -163,8 +186,20 @@ body{
         Let’s get you back to the homepage for more tasty experiences.
     </p>
 
-    <a href="index.html" class="r404-btn">Back To Home</a>
+    <div class="r404-btn-wrap">
+        <a href="index.html" class="r404-btn">Back To Home</a>
+
+        <button class="r404-btn r404-btn-secondary" onclick="goBack()">
+            Previous Page
+        </button>
+    </div>
 </div>
+
+<script>
+function goBack(){
+    window.history.back();
+}
+</script>
 
 </body>
 </html>
